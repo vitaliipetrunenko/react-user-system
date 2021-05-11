@@ -48,7 +48,7 @@ function LoginMain(props) {
         },
         "POST"
       );
-      console.log("regResponse: " + regResponse);
+
       if (regResponse === false) {
         alert("Email already registered");
       }

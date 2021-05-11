@@ -21,7 +21,7 @@ export const authReducer = (state=defaultUsers,action)=>{
     
     switch(action.type){
         case SET_USER:
-            console.log("SETTINGUSER",action)
+
             
             
                 return({
@@ -29,7 +29,7 @@ export const authReducer = (state=defaultUsers,action)=>{
                 })
                 
         case SET_TOKEN:
-                    console.log("SETTINGTOKEN",action)
+
                         return({
                             ...state,currUser: {...state.currUser,token:{...action.token}}
                         })

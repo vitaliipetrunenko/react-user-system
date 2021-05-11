@@ -23,7 +23,7 @@ export async function fetchUsers(method,user=null) {
    useEffect(()=>{
      setUsers([])
       const getUserList = fetchUsers("POST").then(result =>{
-        console.log("Got Users:", result )
+
         setUsers(result)
 
 

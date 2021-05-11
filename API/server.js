@@ -28,7 +28,7 @@ app.use('/login', (req, res) => {
         let newToken = newTokenGen();
         
         submitTokenToDB(req.body.email,newToken)
-        console.log("sent to db",newToken)
+        
         
        
         res.send(newToken)
@@ -67,10 +67,10 @@ app.use('/login', (req, res) => {
 });
 
 app.use('/register', (req, res) => {
-    console.log(req.body)
+    
     let user = req.body
     regUser(req.body).then(results =>{
-        console.log("dbResponse: " + results)
+        
         res.send(results);
     })
     
@@ -79,11 +79,11 @@ app.use('/register', (req, res) => {
 
 
 app.use('/admin', (req, res) => {
-    console.log(req.body)
+    
     if(req.method==="POST"){
     
     getAllUsers().then(results =>{
-        console.log("dbResponse on all users: " + results)
+       
         res.send(results);
     })
 }else if(req.method==="PATCH"){
@@ -136,7 +136,7 @@ app.use('/stats', (req, res) => {
     
     
     getStats().then(results =>{
-        console.log("dbResponseONstats: " + results)
+       
         res.send(results);
     })
     
@@ -218,9 +218,9 @@ function regUser(user) {
             email:user.username,
             role:user.role
         }
-       console.log(results);
+      
        if(results.length === 0){
-           console.log("====No users found====")
+           
            return collection.insertOne(newUser)
             
     }
@@ -254,7 +254,7 @@ function addProfile(profile){
         return collection.findOne(profile)
     }
     ).then(results => {
-        console.log("results:",results)
+        
        if(!results){
         return collection.insertOne(profile)
        }
@@ -272,7 +272,7 @@ function changeProfile(profiles){
         return collection.findOne(oldProfile)
     }
     ).then(results => {
-        console.log(results);
+        
        if(results){
         return collection.updateOne(oldProfile,{$set:newProfile})
        }
@@ -283,17 +283,16 @@ function changeProfile(profiles){
 function changeUser(users){
     const newUser = users[0]
     const oldUser = users[1]
-    console.log("NEWUSER:", newUser)
-    console.log("OLDUSER:", oldUser)
+ 
     let collection
     return mongoClient.connect().then(client => {
         const db = client.db("ReactUsersDB");
         collection = db.collection("Users");
-        console.log("ATLESTGOTTOFUNC+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+
         return collection.findOne(oldUser)
     }
     ).then(results => {
-        console.log("NEEEEEEEEEEEEEEEEEEEEEEEEEEEEEXT",results);
+ 
        if(results){
         return collection.updateOne(oldUser,{$set:newUser})
        }

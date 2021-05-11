@@ -32,16 +32,16 @@ function UserProfiles(props){
         props.setProfilesAC([])
             if(props.wantedUser){
                 getProfiles(props.wantedUser).then(profiles =>{
-                    console.log("wanteduser:",props.wantedUser)
+
                     props.setProfilesAC(profiles)
                 })
                 
 
             }
             else{
-                console.log("LOADINGOWN")
+
                 getProfiles(props.currUser.email).then(profiles =>{
-                    console.log("wanteduser:",props.wantedUser)
+
                     props.setProfilesAC(profiles)
                 })
             }
@@ -54,7 +54,7 @@ function UserProfiles(props){
             const addProfileResult = await profileChange(
                 {name,surname,age,author:(props.wantedUser ? props.wantedUser : props.currUser.email)},"PUT"
             )
-            console.log("ADDPROFILERESULT :", addProfileResult )
+
             if(addProfileResult===false){
                 alert("duplicate profile")
             }

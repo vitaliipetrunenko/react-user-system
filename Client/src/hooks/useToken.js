@@ -22,7 +22,7 @@ export default function useToken() {
     loginUser({email},"PUT").then((result)=>{
         setToken(result)
         localStorage.setItem('token', JSON.stringify(result));
-        console.log("New Token Results:",result)
+
         return result
     })
 }

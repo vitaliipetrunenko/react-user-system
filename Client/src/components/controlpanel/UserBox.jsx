@@ -25,7 +25,7 @@ function UserBox(props) {
             const changeUserResult = await fetchUsers(
                 "PATCH", [{name,email:mail,role},{name:props.user.name,email:props.user.email,role:props.user.role}]
             )
-            console.log("CHANGEUSERRESULT :", changeUserResult )
+
             if(changeUserResult===false){
                 alert("duplicate user")
             }
@@ -41,7 +41,7 @@ function UserBox(props) {
         const changeUserResult = await fetchUsers(
             "DELETE", {name:props.user.name,email:props.user.email,role:props.user.role}
         )
-        console.log("CHANGEUSERRESULT :", changeUserResult )
+
         if(changeUserResult===false){
             alert("profile not deleted")
         }

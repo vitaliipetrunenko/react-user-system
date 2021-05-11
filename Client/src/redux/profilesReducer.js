@@ -20,7 +20,7 @@ export const profileReducer = (state=defaultProfiles,action)=>{
    
     switch(action.type){
         case SET_PROFILES:
-            console.log("working on profiles")
+
                 return({
                     ...state,currProfiles: [...action.profiles]
                 })

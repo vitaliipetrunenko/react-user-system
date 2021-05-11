@@ -24,7 +24,7 @@ import styl from './UserProfiles.module.css'
             const changeProfileResult = await profileChange(
                 [{name,surname,age,author:props.author},{name:props.name,surname:props.surname,age:props.age,author:props.author}],"PATCH"
             )
-            console.log("CHANGEPROFILERESULT :", changeProfileResult )
+
             if(changeProfileResult===false){
                 alert("duplicate profile")
             }
@@ -39,7 +39,7 @@ import styl from './UserProfiles.module.css'
         const changeProfileResult = await profileChange(
             {name:props.name,surname:props.surname,age:props.age,author:props.author},"DELETE"
         )
-        console.log("CHANGEPROFILERESULT :", changeProfileResult )
+
         if(changeProfileResult===false){
             alert("profile not deleted")
         }
@@ -59,7 +59,7 @@ import styl from './UserProfiles.module.css'
   }
     }
 
-    console.log("CHECKS: ",props.author,props.currUser)
+
     //if((props.author===props.wantedUser && props.author===props.currUser.email)|| (props.author===props.wantedUser && props.currUser.role==="ADMIN")){
     return(
         <div className={styl.box}>

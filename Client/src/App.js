@@ -15,7 +15,7 @@ import ControlPanelHOC from './components/controlpanel/ControlPanel';
 
 
 async function fetchUser(token) {
-  console.log("serchingToken :",token)
+
   return fetch('http://localhost:8080/login', {
     method: 'PATCH',
     headers: {
@@ -30,7 +30,7 @@ function loadUserFromToken(token){
   return fetchUser(token).then((result,err)=>{
     
     if (!err){
-      console.log("result from token:",result)
+
     
     return result
     }
@@ -73,10 +73,10 @@ function AppMain(props) {
           clearToken()
         }
         else{
-          console.log("token is found in db",result)
+
           props.setUserAC(result)
           props.setTokenAC(renewToken(result.token,result.email))
-          console.log("user in state :",result.email)
+
           getProfiles(result.email).then((result)=>{
             props.setProfilesAC(result)
           })
@@ -89,7 +89,7 @@ function AppMain(props) {
     }
       },[]
   )
-  console.log(token)
+ 
   if (token && token.expiry < (new Date()).getTime()) {
     clearToken()
   }
