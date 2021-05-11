@@ -1,3 +1,16 @@
+.Userboard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-top: 1px solid black;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    background-color: rgb(236, 236, 236);
+}
+
 .boxGrid{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -36,6 +49,7 @@
     height:min-content;
     min-width: 250px;
     min-height: 160px;
+    max-height: 250px;
 
 
 }
@@ -44,10 +58,39 @@
     max-width: 60%;
 
 }
-.boxGrid div h1{
+.boxGrid div p{
+    
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    
+    font-size: larger;
     margin: 0px;
+    text-decoration: none;
 }
+
+.boxGrid div p a{
+    text-decoration: none;
+    color:black;
+    
+    border: 1px solid black;
+    max-height:100px;
+    max-width:100px;
+    text-align: center;
+    margin:10px;
+
+}
+.boxGrid div p a img{
+  
+    width: 100%;
+    height: 100%;
+    
+    
+}
+
+
 .boxGrid div form{
+    max-height: 100%;
     display:flex;
     flex-direction: column;
     justify-content:space-between;

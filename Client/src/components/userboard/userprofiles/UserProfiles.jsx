@@ -72,10 +72,12 @@ function UserProfiles(props){
     let userboxes = [...props.profileList].map(el => <ProfileBoxHOC  key={el._id} currUser={(props.wantedUser ? props.wantedUser : props.currUser.email)} name={el.name} surname={el.surname} age={el.age} author={el.author}/>)
 return(
     <div>
+        <div className={styl.Userboard}>
+        <div>
+        Welcome, {props.currUser.email}!<br/>
+        Browsing, {(props.wantedUser ? props.wantedUser : props.currUser.email)} profiles </div>
 
-        Welcome, {author}<br/>
-        Browsing, {(props.wantedUser ? props.wantedUser : props.currUser.email)} profiles<br/>
-        <button id="ADD" value="ADD" onClick={e => setOperation(e.target.value)}>Add Profile</button>
+        
         {operation === "ADD" ? <form onSubmit={handleSubmit} >
         <label>
           <p>Name</p>
@@ -93,7 +95,8 @@ return(
           <button type="submit">Submit</button>
           <button onClick={()=>{setOperation("NONE")}}>Cancel</button>
         </div>
-      </form> :null}
+      </form> : <button id="ADD" value="ADD" onClick={e => setOperation(e.target.value)}>Add Profile</button> }
+          </div>
         <div className={styl.boxGrid}>{userboxes}</div>
     </div>
 )

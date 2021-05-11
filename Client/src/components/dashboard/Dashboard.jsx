@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from 'react';
 import { getStats } from '../../App';
+import styl from './Dashboard.module.css'
 
 export default function Dashboard() {
     const [stats,setStats]=useState({users:0,pofiles:0,matureProfiles:0});
@@ -11,9 +12,9 @@ export default function Dashboard() {
         
 
     },[])
-  return(<div>
-  <h2>Dashboard</h2>
-      Users: {stats.users}, Profiles: {stats.profiles}, Profiles older than 18: {stats.matureProfiles}
+  return(<div className={styl.Dashboard}>
+  <div><h2>Dashboard</h2></div>
+      <div>Users: {stats.users}</div>  <div>Profiles: {stats.profiles}</div>  <div>Profiles older than 18: {stats.matureProfiles}</div>
     
     </div>
   );

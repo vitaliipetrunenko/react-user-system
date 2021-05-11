@@ -65,11 +65,11 @@ function UserBox(props) {
 
    if(props.currUser.role === 'ADMIN'){
   return(<div className={styl.box}>
-        
+        <p>
         <NavLink to={{
    pathname:'/userprofiles',
    state: {wantedProfile:props.user.email}  
- }}>USER</NavLink>
+ }}><img alt={""} src={'http://mymbs.co.id/public/upload/image/user/user.png'}></img></NavLink></p>
     <form onSubmit={handleSubmit} >
     <span>Name: { operation==="EDIT" ?<textarea value={name} onChange={e => setName(e.target.value)}/>:(props.user? props.user.name: "Loading")}</span>
     <span>Mail: {operation==="EDIT"? <textarea value={mail} onChange={e => setMail(e.target.value)}/>: (props.user ? props.user.email: "Loading")}</span>

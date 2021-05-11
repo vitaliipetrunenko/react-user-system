@@ -1,0 +1,26 @@
+.Dashboard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-top: 1px solid black;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    background-color: rgb(236, 236, 236);
+}
+.Dashboard div{
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    min-height: 100px;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 15px ;
+    font-size: large;
+    margin:5px;
+    
+}

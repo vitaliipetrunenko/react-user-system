@@ -64,7 +64,7 @@ import styl from './UserProfiles.module.css'
     return(
         <div className={styl.box}>
         
-            <h1>Profile</h1>
+            <p>Profile</p>
             <form onSubmit={handleSubmit} >
             <span>Name: { operation==="EDIT" ?<textarea value={name} name="name" onChange={e => setName(e.target.value)}/>:(props.name ? props.name: "Loading")}</span>
             <span>Surname: {operation==="EDIT"? <textarea value={surname} onChange={e => setSurname(e.target.value)}/>: (props.surname ? props.surname: "Loading")}</span>
