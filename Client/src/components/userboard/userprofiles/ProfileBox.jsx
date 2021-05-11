@@ -1,3 +1,4 @@
+import { Backspace, Check, Pen, Trash } from 'css.gg';
 import React,{useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import { getProfiles } from '../../../App';
@@ -71,10 +72,10 @@ import styl from './UserProfiles.module.css'
             <span>Age: {operation==="EDIT"? <textarea type="number" value={age} onChange={e => setAge(parseInt(e.target.value))}/>: ( props.age ? props.age: "Loading")}</span>
             {operation==="DELETE" ? (<span>Are You sure?<br/></span>) : null}
             <div>
-            {operation!=="NONE" ? <button type="submit" name="okay">Okay</button> :null}
-            {operation!=="NONE" ? null : <button value="EDIT" name="edit" onClick={e=>setOperation(e.target.value)}>Edit</button>}
-            {operation!=="NONE" ? null : <button value="DELETE" name="delete" onClick={e=>setOperation(e.target.value)}>Delete</button>}
-            {operation!=="NONE" ? <button type="submit" value="CANCEL" onClick={e => setOperation(e.target.value)}>Cancel</button> : null}
+            {operation!=="NONE" ? <button type="submit" name="okay"><Check/>Okay</button> :null}
+            {operation!=="NONE" ? null : <button value="EDIT" name="edit" onClick={e=>setOperation(e.target.value)}><Pen/>Edit</button>}
+            {operation!=="NONE" ? null : <button value="DELETE" name="delete" onClick={e=>setOperation(e.target.value)}><Trash/>Delete</button>}
+            {operation!=="NONE" ? <button type="submit" value="CANCEL" onClick={e => setOperation(e.target.value)}><Backspace/> Cancel</button> : null}
             </div>
             </form>
         </div>

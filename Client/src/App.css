@@ -43,3 +43,16 @@ html{
 .wrapper {
   padding: 20px;
 }
+button{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+}
+button i{
+  position: relative;
+    left:-30px;
+    top:-1px;
+    
+    
+}

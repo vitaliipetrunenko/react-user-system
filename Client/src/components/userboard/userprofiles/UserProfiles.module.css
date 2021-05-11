@@ -23,7 +23,8 @@
     border: 1px solid black;
 }
 .addButton:hover{
-background-color: blue;
+background-color:  #624AF2;
+;
    transform: scale(1.01)
 }
 .boxGrid{
@@ -153,7 +154,8 @@ input[type="number"]{
     border-radius: 0 0 0 15px;
 }
 .boxGrid div form button:hover{
-   background-color: blue;
+   background-color:  #624AF2;
+   ;
    transform: scale(1.01)
 }
 
@@ -164,5 +166,5 @@ input[type="number"]{
     border-radius: 0 0 15px 0;
 }
 .boxGrid div form button:last-child:hover{
-    background-color: red;
+    background-color: #EB0055;
 }

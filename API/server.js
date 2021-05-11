@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const crypto = require("crypto")
 const app = express();
 
 const MongoClient = require('mongodb').MongoClient;
@@ -9,7 +10,7 @@ mongoClient.setMaxListeners(1);
 function newTokenGen(){
     const now = new Date();
     return({
-        token: 'token', 
+        token: crypto.randomBytes(20).toString('hex') , 
         expiry: now.getTime() + 1000000000
     })
 }
@@ -26,7 +27,7 @@ app.use('/login', (req, res) => {
     if(req.method==="PUT"){
         
         let newToken = newTokenGen();
-        
+        console.log(newToken);
         submitTokenToDB(req.body.email,newToken)
         
         
