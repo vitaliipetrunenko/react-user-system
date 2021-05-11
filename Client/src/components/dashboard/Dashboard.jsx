@@ -14,7 +14,7 @@ export default function Dashboard() {
     },[])
   return(<div className={styl.Dashboard}>
   <div><h2>Dashboard</h2></div>
-      <div>Users: {stats.users}</div>  <div>Profiles: {stats.profiles}</div>  <div>Profiles older than 18: {stats.matureProfiles}</div>
+      <div>Users:<br/><span>{stats.users}</span></div>  <div>Profiles:<br/> <span>{stats.profiles}</span></div>  <div>Profiles older than 18:<br/> <span>{stats.matureProfiles}</span></div>
     
     </div>
   );

@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, NavLink, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import Dashboard from './components/dashboard/Dashboard';
 import Login from './components/login/Login';
-import ControlPanel from './components/controlpanel/ControlPanel';
 import useToken from './hooks/useToken';
 import Userboard,{AdminUserboard} from './components/userboard/Userboard';
-import { Provider,connect } from 'react-redux';
-import store from './redux/redux-store'
+import {connect } from 'react-redux';
 import { setTokenAC, setUserAC, setProfilesAC } from './redux/actionCreators';
 import Header from './components/header/Header';
 import ControlPanelHOC from './components/controlpanel/ControlPanel';

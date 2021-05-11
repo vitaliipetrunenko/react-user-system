@@ -126,7 +126,7 @@ function LoginMain(props) {
           <label htmlFor="operationChoice2">Register</label>
         </div>
         <div>
-          <button type="submit">Submit</button>
+          <button className={styl.submitButton} type="submit">Let's go</button>
         </div>
       </form>
     </div>

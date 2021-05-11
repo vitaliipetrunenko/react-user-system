@@ -1,9 +1,9 @@
 import { connect } from "react-redux"
-import react, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {setProfilesAC} from './../../../redux/actionCreators'
-import UserBox from "./ProfileBox"
+
 import { getProfiles } from "../../../App"
-import UserBoxHOC from "./ProfileBox"
+
 import styl from './UserProfiles.module.css'
 import ProfileBoxHOC from "./ProfileBox"
 
@@ -66,7 +66,7 @@ function UserProfiles(props){
       }
 
     
-    let author = props.currUser.email;        
+        
        
      
     let userboxes = [...props.profileList].map(el => <ProfileBoxHOC  key={el._id} currUser={(props.wantedUser ? props.wantedUser : props.currUser.email)} name={el.name} surname={el.surname} age={el.age} author={el.author}/>)
@@ -92,10 +92,10 @@ return(
           <input type="number" name='age' onChange={e => setAge(parseInt(e.target.value))}/>
         </label>
         <div>
-          <button type="submit">Submit</button>
-          <button onClick={()=>{setOperation("NONE")}}>Cancel</button>
+          <button type="submit" className={styl.submitButton}>Submit</button>
+          <button className={styl.submitButton} onClick={()=>{setOperation("NONE")}}>Cancel</button>
         </div>
-      </form> : <button id="ADD" value="ADD" onClick={e => setOperation(e.target.value)}>Add Profile</button> }
+      </form> : <button className={styl.addButton} id="ADD" value="ADD" onClick={e => setOperation(e.target.value)}>Add Profile</button> }
           </div>
         <div className={styl.boxGrid}>{userboxes}</div>
     </div>

@@ -1,11 +1,9 @@
 import React,{useEffect, useState} from 'react';
 import ContainerUserProfiles from './userprofiles/UserProfiles';
 import {useLocation} from 'react-router-dom'
-import styl from './Userboard.module.css';
+
 
 export default function Userboard(props) {
-    
-   /* */
     
   return(<div >
   <div >
