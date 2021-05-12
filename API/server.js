@@ -84,7 +84,7 @@ app.use('/admin', (req, res) => {
     if(req.method==="POST"){
     
     getAllUsers().then(results =>{
-       
+        
         res.send(results);
     })
 }else if(req.method==="PATCH"){
@@ -182,16 +182,19 @@ function getStats() {
 }
 
 function getAllUsers() {
+    let db;
+    
     return mongoClient.connect().then(client => {
-        const db = client.db("ReactUsersDB");
-        const collection = db.collection("Users");
+        db = client.db("ReactUsersDB");
+        let collection = db.collection("Users");
         return collection.find().toArray()
     }
     ).then(results => {
-        
         return results
+    
     });
 }
+
 
 function getUserByToken(token,expiry) {
     return mongoClient.connect().then(client => {
@@ -323,9 +326,7 @@ function deleteUser(user){
         return collection.deleteOne(user)
     }
     ).then(results => {
-      
         return results
-       
     });
 
 }

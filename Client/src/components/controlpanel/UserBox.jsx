@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {fetchUsers} from './ControlPanel'
 import styl from './../userboard/userprofiles/UserProfiles.module.css'
 import { NavLink } from 'react-router-dom';
-import { Pen, Trash } from 'css.gg'
+import { Check, Close, Pen, Trash } from 'css.gg'
 
 
 function UserBox(props) {
@@ -80,10 +80,10 @@ function UserBox(props) {
               </select>: ( props.user ? props.user.role: "Loading")}</span>
     {operation==="DELETE" ? (<span>Are You sure?<br/></span>) : null}
     <div>
-    {operation!=="NONE" ? <button type="submit" name="okay">Okay</button> :null}
+    {operation!=="NONE" ? <button type="submit" name="okay"><Check/>Okay</button> :null}
     {operation!=="NONE" ? null : <button value="EDIT" onClick={e=>setOperation(e.target.value)}><Pen/>Edit</button>}
     {operation!=="NONE" ? null : <button value="DELETE" name="delete" onClick={e=>setOperation(e.target.value)}><Trash/>Delete</button>}
-    {operation!=="NONE" ? <button type="submit" value="CANCEL" onClick={e => setOperation(e.target.value)}>Cancel</button> : null}
+    {operation!=="NONE" ? <button type="submit" value="CANCEL" onClick={e => setOperation(e.target.value)}><Close/> Cancel</button> : null}
     </div>
     </form>
 </div>

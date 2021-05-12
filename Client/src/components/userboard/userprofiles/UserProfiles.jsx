@@ -6,6 +6,7 @@ import { getProfiles } from "../../../App"
 
 import styl from './UserProfiles.module.css'
 import ProfileBoxHOC from "./ProfileBox"
+import { Add, Check, Close, MathPlus } from "css.gg"
 
 
 export async function profileChange(profile,method) {
@@ -95,7 +96,7 @@ return(
           <button type="submit" className={styl.submitButton}>Submit</button>
           <button className={styl.submitButton} onClick={()=>{setOperation("NONE")}}>Cancel</button>
         </div>
-      </form> : <button className={styl.addButton} id="ADD" value="ADD" onClick={e => setOperation(e.target.value)}>Add Profile</button> }
+      </form> : <button className={styl.addButton} id="ADD"  value="ADD" onClick={e => setOperation(e.target.value)}><Add/>Add Profile</button> }
           </div>
         <div className={styl.boxGrid}>{userboxes}</div>
     </div>

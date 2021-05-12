@@ -77,7 +77,7 @@ describe('Add profile', () => {
     await page.click('textarea[name=name]')
     await page.type('textarea[name=name]', "EDITTEST")
     await page.$$eval("button[name=okay]",node => node[node.length-1].click())
-    expect(await page.$$eval("span",node => node[node.length-3].innerText)).toBe('Name: ' + profile.name + "EDITTEST");
+    expect(await page.$$eval("span",node => node[node.length-3].innerText)).toContain("EDITTEST");
 
     await page.$$eval("button[name=delete]",node => node[node.length-1].click())
     //await page.click(deleteButton)

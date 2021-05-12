@@ -1,4 +1,4 @@
-import { Controller, Home, LogOut } from 'css.gg'
+import { Controller, Eye, Home, LogOff, LogOut } from 'css.gg'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styl from './Header.module.css'
@@ -13,8 +13,8 @@ export default  function Header(props){
    state: {wantedProfile:props.currUser.email}  
  }}><Home/>Home</NavLink>
             
-            {props.currUser.role === 'ADMIN' ? <NavLink to="/control"><Controller/>Control</NavLink>:null}
-            <a onClick={()=>{props.clearToken()}}><LogOut/>Log Out</a>
+            {props.currUser.role === 'ADMIN' ? <NavLink to="/control"><Eye/>Control</NavLink>:null}
+            <a onClick={()=>{props.clearToken()}}><LogOff/>Log Out</a>
 
             </div>
         </div>

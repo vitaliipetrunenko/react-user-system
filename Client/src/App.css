@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 html{
+  
   background-color: #F7F7FC;
 }
 .App {
@@ -44,15 +46,19 @@ html{
   padding: 20px;
 }
 button{
+  font-family: 'Poppins', sans-serif;
   display:flex;
   align-items: center;
   justify-content: center;
   min-height: 30px;
+  cursor: pointer;
+  background-color: white;
 }
 button i{
   position: relative;
-    left:-30px;
+    left:-20px;
     top:-1px;
+    
     
     
 }
