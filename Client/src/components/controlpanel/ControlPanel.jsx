@@ -6,7 +6,7 @@ import Dashboard from '../dashboard/Dashboard';
 
 export async function fetchUsers(method,user=null) {
  
-  return fetch('http://localhost:8080/admin', {
+  return fetch('/api/admin', {
     method: method,
     headers: {
       'Content-Type': 'application/json'

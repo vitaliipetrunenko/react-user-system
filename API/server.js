@@ -1,7 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const crypto = require("crypto")
+const port = process.env.PORT || 3000
 const app = express();
+const path = require('path')
 
 const MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://Admin:AdminAdmin@cluster0.chefr.mongodb.net/ReactUsersDB?retryWrites=true&w=majority";
@@ -15,6 +17,12 @@ function newTokenGen(){
     })
 }
 
+app.use(express.static(path.join(__dirname, 'build')))
+
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'))
+  })
+
 app.use(express.json());
 const corsOptions={
     "origin": "*",
@@ -23,7 +31,7 @@ const corsOptions={
 app.use(cors(corsOptions));
 
 
-app.use('/login', (req, res) => {
+app.use('/api/login', (req, res) => {
     if(req.method==="PUT"){
         
         let newToken = newTokenGen();
@@ -67,7 +75,7 @@ app.use('/login', (req, res) => {
     
 });
 
-app.use('/register', (req, res) => {
+app.use('/api/register', (req, res) => {
     
     let user = req.body
     regUser(req.body).then(results =>{
@@ -79,7 +87,7 @@ app.use('/register', (req, res) => {
 
 
 
-app.use('/admin', (req, res) => {
+app.use('/api/admin', (req, res) => {
     
     if(req.method==="POST"){
     
@@ -102,7 +110,7 @@ else if(req.method==="DELETE"){
 }
 });
 
-app.use('/profiles', (req, res) => {
+app.use('/api/profiles', (req, res) => {
     if(req.method==="POST"){
     let email = req.body.email
     getProfiles(req.body).then(results =>{
@@ -114,6 +122,7 @@ app.use('/profiles', (req, res) => {
 
     })
 }
+
 else if(req.method==="PUT"){
     addProfile(req.body).then(results =>{
         res.send(results);
@@ -133,17 +142,20 @@ else if(req.method==="DELETE"){
 }
 });
 
-app.use('/stats', (req, res) => {
+app.use('/api/stats', (req, res) => {
     
-    
-    getStats().then(results =>{
-       
+    console.log("stage2")
+    getStatsAPI().then(results =>{
+       console.log(results)
         res.send(results);
     })
     
 });
 
-app.listen(8080, () => console.log('API is running on http://localhost:8080/'));
+
+
+
+app.listen(port, () => console.log('API is running on port', port));
 
 
 
@@ -159,10 +171,11 @@ function getUser(mail,password) {
     });
 }
 
-function getStats() {
+function getStatsAPI() {
     let responseArray=[];
     let db;
     let collection;
+    console.log("stage 5")
     return mongoClient.connect().then(client => {
         db = client.db("ReactUsersDB");
         collection = db.collection("Users");

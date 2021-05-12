@@ -26,7 +26,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "buildcopy": "npm run build && xcopy /E /H /C /I build .\\..\\api\\build\\ "
   },
   "eslintConfig": {
     "extends": [

@@ -13,7 +13,7 @@ import ControlPanelHOC from './components/controlpanel/ControlPanel';
 
 async function fetchUser(token) {
 
-  return fetch('http://localhost:8080/login', {
+  return fetch('/api/login', {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ function loadUserFromToken(token){
 }
 
 export async function  getProfiles(email){
-  return fetch('http://localhost:8080/profiles', {
+  return fetch('/api/profiles', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -52,12 +52,7 @@ export async function  getProfiles(email){
     .then(data => data.json())
 }
 
-export function  getStats(){
-  return fetch('http://localhost:8080/stats', {
-    method: 'GET',
-  })
-    .then(data => data.json())
-}
+
 
 
 function AppMain(props) {

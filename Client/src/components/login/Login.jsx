@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { getProfiles } from "../../App";
 
 export async function loginUser(credentials, method) {
-  return fetch("http://localhost:8080/login", {
+  return fetch("/api/login", {
     method: method,
     headers: {
       "Content-Type": "application/json",
@@ -16,7 +16,7 @@ export async function loginUser(credentials, method) {
 }
 
 export async function regUser(credentials, method) {
-  return fetch("http://localhost:8080/register", {
+  return fetch("/api/register", {
     method: method,
     headers: {
       "Content-Type": "application/json",

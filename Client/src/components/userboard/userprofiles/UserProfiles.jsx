@@ -10,7 +10,7 @@ import { Add, Check, Close, MathPlus } from "css.gg"
 
 
 export async function profileChange(profile,method) {
-    return fetch('http://localhost:8080/profiles', {
+    return fetch('/api/profiles', {
       method: method,
       headers: {
         'Content-Type': 'application/json'
