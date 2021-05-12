@@ -65,7 +65,7 @@ import styl from './UserProfiles.module.css'
     return(
         <div className={styl.box}>
         
-            <p>Profile</p>
+            <p><a><img alt={""} src={'http://mymbs.co.id/public/upload/image/user/user.png'}></img></a></p>
             <form onSubmit={handleSubmit} >
             <span>Name: { operation==="EDIT" ?<textarea value={name} name="name" onChange={e => setName(e.target.value)}/>:(props.name ? props.name: "Loading")}</span>
             <span>Surname: {operation==="EDIT"? <textarea value={surname} onChange={e => setSurname(e.target.value)}/>: (props.surname ? props.surname: "Loading")}</span>
