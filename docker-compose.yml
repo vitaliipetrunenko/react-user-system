@@ -3,7 +3,7 @@ services:
   nodejs-server:
     build:
       context: ./api
-      dockerfile: Dockerfile.api
+      dockerfile: Dockerfile.worker
     ports:
       - "8080:8080"
     container_name: node-api
@@ -13,7 +13,7 @@ services:
   react-ui:
     build:
       context: ./Client
-      dockerfile: Dockerfile.client
+      dockerfile: Dockerfile.web
     ports:
       - "3000:3000"
     container_name: react-ui
