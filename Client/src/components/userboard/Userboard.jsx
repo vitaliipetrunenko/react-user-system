@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react';
-import ContainerUserProfiles from './userprofiles/UserProfiles';
+import HocUserProfiles from './userprofiles/UserProfiles';
 import {useLocation} from 'react-router-dom'
 
 
@@ -7,7 +7,7 @@ export default function Userboard(props) {
     
   return(<div >
   
-    <ContainerUserProfiles wantedUser={props.state.authData.currUser ? props.state.authData.currUser.email : null} />
+    <HocUserProfiles wantedUser={props.state.authData.currUser ? props.state.authData.currUser.email : null} />
     </div>
 
   );
@@ -24,7 +24,7 @@ export function AdminUserboard(props) {
     return(
         <div>
 
-    <ContainerUserProfiles wantedUser={wantedUser ? wantedUser : null} />
+    <HocUserProfiles wantedUser={wantedUser ? wantedUser : null} />
     </div>
     )
 }

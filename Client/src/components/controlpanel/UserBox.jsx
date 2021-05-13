@@ -1,4 +1,4 @@
-import React,{ useEffect, useState} from 'react';
+import React,{ useState} from 'react';
 import {connect} from 'react-redux'
 import {fetchUsers} from './ControlPanel'
 import styl from './../userboard/userprofiles/UserProfiles.module.css'
@@ -8,18 +8,11 @@ import { Check, Close, Pen, Trash } from 'css.gg'
 
 function UserBox(props) {
      
-    const [operation, setOperation] = useState();
-    const [name, setName] = useState();
-    const [mail, setMail] = useState();
-    const [role, setRole] = useState();
-    
-    useEffect(() => {
-        setOperation("NONE")
-        setName(props.user.name)
-        setMail(props.user.email)
-        setRole(props.user.role)
-      },[])
-
+    const [operation, setOperation] = useState("NONE");
+    const [name, setName] = useState(props.user.name);
+    const [mail, setMail] = useState(props.user.email);
+    const [role, setRole] = useState(props.user.role);
+  
     const handleSubmit = async e => {
         e.preventDefault();
         if(operation === 'EDIT'){
@@ -54,36 +47,42 @@ function UserBox(props) {
     
     
   }
-  else if(operation === 'CANCEL'){
-        setName(props.user.name)
-        setMail(props.user.email)
-        setRole(props.user.role)
-        setOperation("NONE")
-  }
+
     }
 
-
+    
 
    if(props.currUser.role === 'ADMIN'){
+    //
+    const questionButtons = [(<button type="submit" name="okay"><Check/>Okay</button>),(<button value="NONE" onClick={e => setOperation("NONE")}><Close/> Cancel</button>),null,null]
+    const defaultButtons =[null,null,(<button value="EDIT" name="edit" onClick={e=>setOperation("EDIT")}><Pen/>Edit</button>),(<button value="DELETE" name="delete" onClick={e=>setOperation("DELETE")}><Trash/>Delete</button>)]
+    
+    let chosenButtons = [];
+    
+    if(operation ==="NONE") chosenButtons=defaultButtons    
+    else chosenButtons=questionButtons
+
+    let boxValues = []
+
+    const inputAreas =[(<textarea value={name} name="name" onChange={e => setName(e.target.value)}/>),(<textarea value={mail} onChange={e => setMail(e.target.value)}/>),( <select  id="roles" onChange={(e) => setRole(e.target.value)} name="roles"><option value="USER">USER</option><option value="ADMIN">ADMIN</option></select>)]
+    const defaultNames=[(props.user? props.user.name: "Loading"),(props.user ? props.user.email: "Loading"),( props.user ? props.user.role: "Loading")]
+
+    if(operation ==="EDIT") boxValues=inputAreas
+    else boxValues=defaultNames
+    //
   return(<div className={styl.box}>
         <p>
-        <NavLink to={{
+        <NavLink name="user" to={{
    pathname:'/userprofiles',
    state: {wantedProfile:props.user.email}  
- }}><img alt={""} src={'http://mymbs.co.id/public/upload/image/user/user.png'}></img></NavLink></p>
+ }}><img alt={""} src='http://mymbs.co.id/public/upload/image/user/user.png'></img></NavLink></p>
     <form onSubmit={handleSubmit} >
-    <span>Name: { operation==="EDIT" ?<textarea value={name} onChange={e => setName(e.target.value)}/>:(props.user? props.user.name: "Loading")}</span>
-    <span>Mail: {operation==="EDIT"? <textarea value={mail} onChange={e => setMail(e.target.value)}/>: (props.user ? props.user.email: "Loading")}</span>
-    <span>Role: {operation==="EDIT"? <select  id="roles" onChange={(e) => setRole(e.target.value)} name="roles">
-                <option value="USER">USER</option>
-                <option value="ADMIN">ADMIN</option>
-              </select>: ( props.user ? props.user.role: "Loading")}</span>
+    <span>Name: {boxValues[0]}</span>
+    <span>Mail: {boxValues[1]}</span>
+    <span>Role: {boxValues[2]}</span>
     {operation==="DELETE" ? (<span>Are You sure?<br/></span>) : null}
     <div>
-    {operation!=="NONE" ? <button type="submit" name="okay"><Check/>Okay</button> :null}
-    {operation!=="NONE" ? null : <button value="EDIT" onClick={e=>setOperation(e.target.value)}><Pen/>Edit</button>}
-    {operation!=="NONE" ? null : <button value="DELETE" name="delete" onClick={e=>setOperation(e.target.value)}><Trash/>Delete</button>}
-    {operation!=="NONE" ? <button value="NONE" onClick={e => setOperation("NONE")}><Close/> Cancel</button> : null}
+    {chosenButtons}
     </div>
     </form>
 </div>

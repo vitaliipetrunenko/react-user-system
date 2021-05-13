@@ -14,7 +14,7 @@ export default  function Header(props){
  }}><Home/>Home</NavLink>
             
             {props.currUser.role === 'ADMIN' ? <NavLink to="/control"><Eye/>Control</NavLink>:null}
-            <a onClick={()=>{props.clearToken()}}><LogOff/>Log Out</a>
+            <a name="LogOut" onClick={()=>{props.clearToken()}}><LogOff/>Log Out</a>
 
             </div>
         </div>

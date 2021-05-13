@@ -6,7 +6,7 @@ import { getProfiles } from "../../../App"
 
 import styl from './UserProfiles.module.css'
 import ProfileBoxHOC from "./ProfileBox"
-import { Add, Check, Close, MathPlus } from "css.gg"
+import { Add } from "css.gg"
 
 
 export async function profileChange(profile,method) {
@@ -74,7 +74,7 @@ function UserProfiles(props){
 return(
     <div>
         <div className={styl.Userboard}>
-        <div>
+        <div name="Greeting">
         Welcome, {props.currUser.email}!<br/>
         Browsing, {(props.wantedUser ? props.wantedUser : props.currUser.email)} profiles </div>
 
@@ -115,5 +115,5 @@ let mapStateToProps = (state,ownProps) => {
 
 
 
-let ContainerUserProfiles = connect(mapStateToProps,{setProfilesAC})(UserProfiles)
-export default ContainerUserProfiles 
+let HocUserProfiles = connect(mapStateToProps,{setProfilesAC})(UserProfiles)
+export default HocUserProfiles 

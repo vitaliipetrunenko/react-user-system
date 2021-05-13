@@ -25,19 +25,19 @@ private: {
 };
 
 
-//create global variables to be used in the beforeAll function
+
 let browser
 let page
 
 beforeAll(async () => {
-  // launch browser 
+
   browser = await puppeteer.launch(
     {
-      headless: false, // headless mode set to false so browser opens up with visual feedback
-      slowMo: 250, // how slow actions should be
+      headless: false,
+      slowMo: 120, 
     }
   )
-  // creates a new page in the opened browser   
+
   page = await browser.newPage()
 })
 
@@ -51,7 +51,9 @@ describe('Login', () => {
     await page.click('input[name=Password]')
     await page.type('input[name=Password]', 'pass')
     await page.click('button[type=submit]')
-    await page.waitForSelector('h2[name=Userboard]')
+    const element = await page.$("div[name=Greeting]");
+    await page.evaluate(element => { element.innerText.includes("Welcome")}, element);
+    
   }, 1600000);
 });
 
@@ -80,16 +82,47 @@ describe('Add profile', () => {
     expect(await page.$$eval("span",node => node[node.length-3].innerText)).toContain("EDITTEST");
 
     await page.$$eval("button[name=delete]",node => node[node.length-1].click())
-    //await page.click(deleteButton)
+
     await page.$$eval("button[name=okay]",node => node[node.length-1].click())
-    //await page.click(okayButton)
-    browser.close()
+
+    await page.waitForSelector('a[name=LogOut]');
+    await page.click('a[name=LogOut]')
+  }, 1600000);
+});
+
+describe('Admin', () => {
+  test('admins can login', async () => {
+    await page.goto(routes.public.login);
+    await page.waitForSelector('form');
+
+    await page.click('input[name=Username]')
+    await page.type('input[name=Username]', 'root')
+    await page.click('input[name=Password]')
+    await page.type('input[name=Password]', 'root')
+    await page.click('button[type=submit]')
+    const element = await page.$("div[name=Greeting]");
+    await page.evaluate(element => { element.innerText.includes("Welcome")}, element);
+    
+  }, 1600000);
+});
+
+describe('Admin control', () => {
+  test('admins can look through Users', async () => {
+    await page.goto(routes.private.control);
+  }, 1600000);
+});
+
+describe('Admin control2', () => {
+  test('Admins can see user`s profiles', async () => {
+    await page.waitForSelector('a[name=user]');
+    await page.click('a[name=user]')
+    const element = await page.$("div[name=Greeting]");
+    await page.evaluate(element => { element.innerText.includes("Welcome")}, element);
   }, 1600000);
 });
 
 
 
-// This function occurs after the result of each tests, it closes the browser
 afterAll(() => {
-  
+  browser.close()
 })
