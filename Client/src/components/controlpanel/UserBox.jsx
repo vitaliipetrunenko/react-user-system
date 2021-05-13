@@ -83,7 +83,7 @@ function UserBox(props) {
     {operation!=="NONE" ? <button type="submit" name="okay"><Check/>Okay</button> :null}
     {operation!=="NONE" ? null : <button value="EDIT" onClick={e=>setOperation(e.target.value)}><Pen/>Edit</button>}
     {operation!=="NONE" ? null : <button value="DELETE" name="delete" onClick={e=>setOperation(e.target.value)}><Trash/>Delete</button>}
-    {operation!=="NONE" ? <button type="submit" value="CANCEL" onClick={e => setOperation(e.target.value)}><Close/> Cancel</button> : null}
+    {operation!=="NONE" ? <button value="NONE" onClick={e => setOperation("NONE")}><Close/> Cancel</button> : null}
     </div>
     </form>
 </div>

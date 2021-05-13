@@ -60,7 +60,7 @@ import styl from './UserProfiles.module.css'
   }
     }
 
-
+    console.log("operation on render ",operation)
     //if((props.author===props.wantedUser && props.author===props.currUser.email)|| (props.author===props.wantedUser && props.currUser.role==="ADMIN")){
     return(
         <div className={styl.box}>
@@ -75,7 +75,7 @@ import styl from './UserProfiles.module.css'
             {operation!=="NONE" ? <button type="submit" name="okay"><Check/>Okay</button> :null}
             {operation!=="NONE" ? null : <button value="EDIT" name="edit" onClick={e=>setOperation(e.target.value)}><Pen/>Edit</button>}
             {operation!=="NONE" ? null : <button value="DELETE" name="delete" onClick={e=>setOperation(e.target.value)}><Trash/>Delete</button>}
-            {operation!=="NONE" ? <button type="submit" value="CANCEL" onClick={e => setOperation(e.target.value)}><Close/> Cancel</button> : null}
+            {operation!=="NONE" ? <button value="NONE" onClick={e => setOperation("NONE")}><Close/> Cancel</button> : null}
             </div>
             </form>
         </div>
