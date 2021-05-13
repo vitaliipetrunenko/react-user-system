@@ -33,7 +33,7 @@ getUser : function(mail,password) {
         return results
     });
 },
-//TODO CLOSE
+
 getStatsAPI : function() {
     let responseArray=[];
     let db;

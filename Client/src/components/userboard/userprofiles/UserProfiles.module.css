@@ -99,7 +99,12 @@ input[type="number"]{
 
 }
 .boxGrid .box textarea{
-    height:2ch;
+    height:1.5ch;
+    border-top: none;
+        resize: none;
+    border-left: none;
+    border-right: none;
+    background-color:transparent;
     max-width: 60%;
 
 }
