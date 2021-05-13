@@ -35,7 +35,7 @@ export async function fetchUsers(method,user=null) {
      let UserList = [...Users].map((e,i) => <UserBoxHOC key={Users[i]._id} setUsers={setUsers} user={Users[i]}/>)
   return(<div>
     
-    <h2>ControlPanel</h2>
+   
     <Dashboard/>
     <div className={styl.boxGrid}>{UserList}</div>
     </div>
