@@ -16,7 +16,7 @@ const corsOptions={
 router.use(cors(corsOptions));
 
 
-router.use('/api/login', (req, res) => {
+router.use('/login', (req, res) => {
     if(req.method==="PUT"){
         
         let newToken = apiFunc.newTokenGen();
@@ -66,7 +66,7 @@ router.use('/api/login', (req, res) => {
     
 });
 
-router.use('/api/register', (req, res) => {
+router.use('/register', (req, res) => {
     
     let user = req.body
     apiFunc.regUser(req.body).then(results =>{
@@ -78,7 +78,7 @@ router.use('/api/register', (req, res) => {
 
 
 
-router.use('/api/admin', (req, res) => {
+router.use('/admin', (req, res) => {
     
     if(req.method==="POST"){
     
@@ -101,7 +101,7 @@ else if(req.method==="DELETE"){
 }
 });
 
-router.use('/api/profiles', (req, res) => {
+router.use('/profiles', (req, res) => {
     if(req.method==="POST"){
     let email = req.body.email
     apiFunc.getProfiles(req.body).then(results =>{
@@ -133,7 +133,7 @@ else if(req.method==="DELETE"){
 }
 });
 
-router.use('/api/stats', (req, res) => {
+router.use('/stats', (req, res) => {
     
     console.log("stage2")
     apiFunc.getStatsAPI().then(results =>{
