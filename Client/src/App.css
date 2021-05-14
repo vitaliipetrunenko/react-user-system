@@ -7,6 +7,10 @@ html{
   text-align: center;
   background-color: #F7F7FC;
 }
+#root{
+  width: 100vw;
+  height: 100vh;
+}
 
 .App-logo {
   height: 40vmin;
@@ -43,7 +47,7 @@ html{
   }
 }
 .wrapper {
-  padding: 20px;
+  padding: 0px;
 }
 button{
   font-family: 'Poppins', sans-serif;

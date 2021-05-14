@@ -1,10 +1,14 @@
+import { Button, TextField } from '@material-ui/core';
 import { Check, Close, Pen, Trash } from 'css.gg';
 import React,{useState} from 'react';
 import {connect} from 'react-redux';
-import { getProfiles } from '../../../App';
+import { getProfiles,profileChange } from '../../../apiCalls/apiCalls';
 import {setProfilesAC} from '../../../redux/actionCreators'
-import { profileChange } from './UserProfiles';
 import styl from './UserProfiles.module.css'
+import CancelIcon from '@material-ui/icons/Cancel';
+import CheckIcon from '@material-ui/icons/Check';
+import CreateIcon from '@material-ui/icons/Create';
+import DeleteIcon from '@material-ui/icons/Delete';
 
  function ProfileBox(props) {
     const [operation, setOperation] = useState("NONE");
@@ -40,8 +44,8 @@ import styl from './UserProfiles.module.css'
   }
 
     }
-    const questionButtons = [(<button type="submit" name="okay"><Check/>Okay</button>),(<button value="NONE" onClick={e => setOperation("NONE")}><Close/> Cancel</button>),null,null]
-    const defaultButtons =[null,null,(<button value="EDIT" name="edit" onClick={e=>setOperation("EDIT")}><Pen/>Edit</button>),(<button value="DELETE" name="delete" onClick={e=>setOperation("DELETE")}><Trash/>Delete</button>)]
+    const questionButtons = [(<Button type="submit" name="okay"><CheckIcon/>Okay</Button>),(<Button value="NONE" onClick={e => setOperation("NONE")}><CancelIcon/> Cancel</Button>),null,null]
+    const defaultButtons =[null,null,(<Button value="EDIT" name="edit" onClick={e=>setOperation("EDIT")}><CreateIcon/>Edit</Button>),(<Button value="DELETE" name="delete" onClick={e=>setOperation("DELETE")}>Delete<DeleteIcon/></Button>)]
     
     let chosenButtons = [];
     
@@ -50,7 +54,7 @@ import styl from './UserProfiles.module.css'
 
     let boxValues = []
 
-    const inputAreas =[(<textarea value={name} name="name" onChange={e => setName(e.target.value)}/>),(<textarea value={surname} onChange={e => setSurname(e.target.value)}/>),(<textarea type="number" value={age} onChange={e => setAge(parseInt(e.target.value))}/>)]
+    const inputAreas =[(<TextField value={name} name="name" onChange={e => setName(e.target.value)}/>),(<TextField value={surname} onChange={e => setSurname(e.target.value)}/>),(<TextField type="number" value={age} onChange={e => setAge(parseInt(e.target.value))}/>)]
     const defaultNames=[(props.name ? props.name: "Loading"),(props.surname ? props.surname: "Loading"),(props.age ? props.age: "Loading")]
 
     if(operation ==="EDIT") boxValues=inputAreas
@@ -59,7 +63,7 @@ import styl from './UserProfiles.module.css'
     return(
         <div className={styl.box}>
         
-            <p><a><img alt={""} src='http://mymbs.co.id/public/upload/image/user/user.png'></img></a></p>
+            {operation==="NONE"?<p><a><img alt={""} src='http://mymbs.co.id/public/upload/image/user/user.png'></img></a></p> :null}
             <form onSubmit={handleSubmit} >
             <span>Name: {boxValues[0]}</span>
             <span>Surname: {boxValues[1]}</span>

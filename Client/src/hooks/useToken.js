@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { loginUser } from '../components/login/Login';
+import { loginUser } from '../apiCalls/apiCalls.js';
 
 export default function useToken() {
   const getToken = () => {

@@ -2,55 +2,14 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Dashboard from './components/dashboard/Dashboard';
-import Login from './components/login/Login';
 import useToken from './hooks/useToken';
 import Userboard,{AdminUserboard} from './components/userboard/Userboard';
 import {connect } from 'react-redux';
 import { setTokenAC, setUserAC, setProfilesAC } from './redux/actionCreators';
 import Header from './components/header/Header';
 import ControlPanelHOC from './components/controlpanel/ControlPanel';
-
-
-async function fetchUser(token) {
-
-  return fetch('/api/login', {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(token)
-  })
-    .then(data => data.json()).catch(err =>{return err})
- }
-
-function loadUserFromToken(token){
-  return fetchUser(token).then((result,err)=>{
-    
-    if (!err){
-
-    
-    return result
-    }
-    else {
-      return false
-    }
-    
-    
-  })
-
-  
-}
-
-export async function  getProfiles(email){
-  return fetch('/api/profiles', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({email:email})
-  })
-    .then(data => data.json())
-}
+import AuthFormHOC from './components/forms/LoginForm';
+import { getProfiles, loadUserFromToken } from './apiCalls/apiCalls';
 
 
 
@@ -87,7 +46,7 @@ function AppMain(props) {
   }
   if(!token ) {
     
-    return <Login  setToken={setToken} />
+    return <AuthFormHOC  setToken={setToken} />
   }
   else{
 

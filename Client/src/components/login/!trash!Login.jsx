@@ -1,29 +1,13 @@
+/*
 import React, { useState, useEffect } from "react";
 import styl from "./Login.module.css";
 import PropTypes from "prop-types";
 import { setUserAC, setProfilesAC } from "../../redux/actionCreators";
 import { connect } from "react-redux";
 import { getProfiles } from "../../App";
+import AuthForm from "../forms/LoginForm";
 
-export async function loginUser(credentials, method) {
-  return fetch("/api/login", {
-    method: method,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  }).then((data) => data.json());
-}
 
-export async function regUser(credentials, method) {
-  return fetch("/api/register", {
-    method: method,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(credentials),
-  }).then((data) => data.json());
-}
 
 function LoginMain(props) {
   const [username, setUserName] = useState();
@@ -129,6 +113,11 @@ function LoginMain(props) {
           <button className={styl.submitButton} type="submit">Let's go</button>
         </div>
       </form>
+
+
+          <AuthForm/>
+
+
     </div>
   );
 }
@@ -143,3 +132,4 @@ let mapStateToProps = (state, ownProps) => ({
 });
 let Login = connect(mapStateToProps, { setUserAC, setProfilesAC })(LoginMain);
 export default Login;
+*/

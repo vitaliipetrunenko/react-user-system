@@ -12,7 +12,7 @@
     box-shadow: 0px 5px 5px rgb(172, 172, 172) ;
 }
 .Userboard div{
- max-width: 80%;
+    max-width: 80%;
     overflow: hidden;
     overflow-wrap: break-word;
     text-overflow: ellipsis;
@@ -34,8 +34,7 @@
     
     margin-top:15px;
     font-size:normal;
-    box-shadow: 0px 5px 5px rgb(172, 172, 172) ;
-    border: 1px solid black;
+    
 }
 .addButton:hover{
 background-color:  #624AF2;
@@ -66,7 +65,7 @@ background-color:  #624AF2;
     }
 }
 
-input[type="number"]{
+/* input[type="number"]{
     
     
     border-radius: 15px;
@@ -74,15 +73,15 @@ input[type="number"]{
     padding-left: 5px;
     padding-right: 5px;
     box-shadow: 0px 5px 5px rgb(172 172 172);
-}
+} */
 
 .boxGrid .box{
     background-color:white;
-    border: solid 1px black;
+    border: solid 0.5px lightgray; 
     border-radius: 33px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     margin-left: auto;
     margin-right: auto;
     margin-top:5px;
@@ -91,10 +90,10 @@ input[type="number"]{
     text-align: center;
     height:min-content;
     min-width: 250px;
-    min-height: 160px;
+    min-height: 240px;
     max-height: 250px;
     max-width: 350px;
-    box-shadow: 0px 5px 5px rgb(172, 172, 172) ;
+    /* box-shadow: 0px 5px 5px rgb(172, 172, 172) ; */
 
 
 }
@@ -137,6 +136,7 @@ input[type="number"]{
     
     
 }
+/*
 .submitButton{
     display:inline;
     background-color: white;
@@ -166,6 +166,7 @@ input[type="number"]{
 .submitButton:last-child:hover{
     background-color: #EB0055;
 }
+*/
 
 .boxGrid div form{
     max-height: 100%;
@@ -176,13 +177,14 @@ input[type="number"]{
 .boxGrid div form div{
     display:flex;
     flex-direction: row;
+    justify-content: center;
 }
 .boxGrid div form button{
     width: 50%;
     margin:0px;
     border: 0px;
-    border-top: 1px solid;
-    border-right: 1px solid;
+    border-top: 1px solid lightgray;
+    border-right: 1px solid lightgray;
     
     border-radius: 0 0 0 33px;
 }
@@ -195,7 +197,7 @@ input[type="number"]{
 .boxGrid div form button:last-child{
     width: 50%;
     border-right: 0px;
-    border-left: 1px solid;
+    border-left: 1px solid lightgray;
     border-radius: 0 0 33px 0;
 }
 .boxGrid div form button:last-child:hover{

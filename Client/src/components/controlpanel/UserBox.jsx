@@ -4,6 +4,11 @@ import {fetchUsers} from './ControlPanel'
 import styl from './../userboard/userprofiles/UserProfiles.module.css'
 import { NavLink } from 'react-router-dom';
 import { Check, Close, Pen, Trash } from 'css.gg'
+import { Button, Select, TextField } from '@material-ui/core';
+import CancelIcon from '@material-ui/icons/Cancel';
+import CheckIcon from '@material-ui/icons/Check';
+import CreateIcon from '@material-ui/icons/Create';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
 function UserBox(props) {
@@ -54,8 +59,8 @@ function UserBox(props) {
 
    if(props.currUser.role === 'ADMIN'){
     //
-    const questionButtons = [(<button type="submit" name="okay"><Check/>Okay</button>),(<button value="NONE" onClick={e => setOperation("NONE")}><Close/> Cancel</button>),null,null]
-    const defaultButtons =[null,null,(<button value="EDIT" name="edit" onClick={e=>setOperation("EDIT")}><Pen/>Edit</button>),(<button value="DELETE" name="delete" onClick={e=>setOperation("DELETE")}><Trash/>Delete</button>)]
+    const questionButtons = [(<Button type="submit" name="okay">Okay<CheckIcon/></Button>),(<Button value="NONE" onClick={e => setOperation("NONE")}><CancelIcon/> Cancel</Button>),null,null]
+    const defaultButtons =[null,null,(<Button value="EDIT" name="edit" onClick={e=>setOperation("EDIT")}><CreateIcon/>Edit</Button>),(<Button value="DELETE" name="delete" onClick={e=>setOperation("DELETE")}>Delete<DeleteIcon/></Button>)]
     
     let chosenButtons = [];
     
@@ -64,18 +69,18 @@ function UserBox(props) {
 
     let boxValues = []
 
-    const inputAreas =[(<textarea value={name} name="name" onChange={e => setName(e.target.value)}/>),(<textarea value={mail} onChange={e => setMail(e.target.value)}/>),( <select  id="roles" onChange={(e) => setRole(e.target.value)} name="roles"><option value="USER">USER</option><option value="ADMIN">ADMIN</option></select>)]
+    const inputAreas =[(<TextField value={name} name="name" onChange={e => setName(e.target.value)}/>),(<TextField value={mail} onChange={e => setMail(e.target.value)}/>),( <Select id="roles" value={role} onChange={(e) => setRole(e.target.value)} name="roles"><option value="USER">user</option><option value="ADMIN">admin</option></Select>)]
     const defaultNames=[(props.user? props.user.name: "Loading"),(props.user ? props.user.email: "Loading"),( props.user ? props.user.role: "Loading")]
 
     if(operation ==="EDIT") boxValues=inputAreas
     else boxValues=defaultNames
     //
   return(<div className={styl.box}>
-        <p>
+        {operation==="NONE"?<p>
         <NavLink name="user" to={{
    pathname:'/userprofiles',
    state: {wantedProfile:props.user.email}  
- }}><img alt={""} src='http://mymbs.co.id/public/upload/image/user/user.png'></img></NavLink></p>
+ }}><img alt={""} src='http://mymbs.co.id/public/upload/image/user/user.png'></img></NavLink></p>:null}
     <form onSubmit={handleSubmit} >
     <span>Name: {boxValues[0]}</span>
     <span>Mail: {boxValues[1]}</span>

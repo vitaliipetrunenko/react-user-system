@@ -1,3 +1,7 @@
+import { Button } from '@material-ui/core'
+import { HomeSharp } from '@material-ui/icons'
+import GroupIcon from '@material-ui/icons/Group';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { Controller, Eye, Home, LogOff, LogOut } from 'css.gg'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
@@ -11,10 +15,10 @@ export default  function Header(props){
         <NavLink to={{
    pathname:'/',
    state: {wantedProfile:props.currUser.email}  
- }}><Home/>Home</NavLink>
+ }}><Button>Home <HomeSharp/> </Button></NavLink>
             
-            {props.currUser.role === 'ADMIN' ? <NavLink to="/control"><Eye/>Control</NavLink>:null}
-            <a name="LogOut" onClick={()=>{props.clearToken()}}><LogOff/>Log Out</a>
+            {props.currUser.role === 'ADMIN' ? <NavLink to="/control"><Button>Users<GroupIcon /></Button></NavLink>:null}
+            <Button name="LogOut" onClick={()=>{props.clearToken()}}>Log Out<ExitToAppIcon/></Button>
 
             </div>
         </div>
