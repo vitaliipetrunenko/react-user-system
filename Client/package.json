@@ -28,7 +28,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test-jest": "jest",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "buildcopy": "npm run build && xcopy /E /H /C /I build .\\..\\api\\build\\"
   },
@@ -51,16 +52,13 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.13.13",
     "cors": "^2.8.5",
     "express": "^4.17.1"
   },
   "jest": {
-  
-  
     "transform": {
-       "^.+\\.(js|jsx)$": "babel-jest"
+      "^.+\\.(js|jsx)$": "babel-jest"
     }
-    
-    
   }
 }
