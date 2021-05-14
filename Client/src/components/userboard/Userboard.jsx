@@ -7,7 +7,7 @@ export default function Userboard(props) {
     
   return(<div >
   
-    <HocUserProfiles wantedUser={props.state.authData.currUser ? props.state.authData.currUser.email : null} />
+    <HocUserProfiles User={props.state.authData.currUser ? props.state.authData.currUser.email : null} />
     </div>
 
   );
@@ -24,7 +24,7 @@ export function AdminUserboard(props) {
     return(
         <div>
 
-    <HocUserProfiles wantedUser={wantedUser ? wantedUser : null} />
+    <HocUserProfiles User={wantedUser ? wantedUser :null} />
     </div>
     )
 }

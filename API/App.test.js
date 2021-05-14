@@ -34,7 +34,7 @@ beforeAll(async () => {
   browser = await puppeteer.launch(
     {
       headless: false,
-      slowMo: 120, 
+      slowMo: 30, 
     }
   )
 
@@ -46,10 +46,10 @@ describe('Login', () => {
     await page.goto(routes.public.login);
     await page.waitForSelector('form');
 
-    await page.click('input[name=Username]')
-    await page.type('input[name=Username]', 'user')
-    await page.click('input[name=Password]')
-    await page.type('input[name=Password]', 'pass')
+    await page.click('input[name=email]')
+    await page.type('input[name=email]', 'adr5@mail.com')
+    await page.click('input[name=password]')
+    await page.type('input[name=password]', 'pass')
     await page.click('button[type=submit]')
     const element = await page.$("div[name=Greeting]");
     await page.evaluate(element => { element.innerText.includes("Welcome")}, element);
@@ -70,23 +70,26 @@ describe('Add profile', () => {
     await page.click('input[name=age]')
     await page.type('input[name=age]', JSON.stringify(profile.age))
     await page.click('button[type=submit]')
-    await page.waitForSelector('span')
+    await page.waitForSelector('span[name=name]')
     await page.waitForTimeout(2000)
     //const profileHandle = await page.$('span')
-    expect(await page.$$eval("span",node => node[node.length-3].innerText)).toBe('Name: ' + profile.name);
+    expect(await page.$$eval("span[name=name]",node => node[node.length-1].innerText)).toBe('Name: ' + profile.name);
 
     await page.$$eval("button[name=edit]",node => node[node.length-1].click())
-    await page.click('textarea[name=name]')
-    await page.type('textarea[name=name]', "EDITTEST")
+    
+    await page.$$eval("input[id=name]",node => node[node.length-1].click())
+    await page.type("input[id=name]", "EDITTEST")
+  
     await page.$$eval("button[name=okay]",node => node[node.length-1].click())
-    expect(await page.$$eval("span",node => node[node.length-3].innerText)).toContain("EDITTEST");
+    await page.waitForTimeout(2000)
+    expect(await page.$$eval("span[name=name]",node => node[node.length-1].innerText)).toContain("EDITTEST");
 
     await page.$$eval("button[name=delete]",node => node[node.length-1].click())
 
     await page.$$eval("button[name=okay]",node => node[node.length-1].click())
 
-    await page.waitForSelector('a[name=LogOut]');
-    await page.click('a[name=LogOut]')
+    await page.waitForSelector('button[name=LogOut]');
+    await page.click('button[name=LogOut]')
   }, 1600000);
 });
 
@@ -95,10 +98,10 @@ describe('Admin', () => {
     await page.goto(routes.public.login);
     await page.waitForSelector('form');
 
-    await page.click('input[name=Username]')
-    await page.type('input[name=Username]', 'root')
-    await page.click('input[name=Password]')
-    await page.type('input[name=Password]', 'root')
+    await page.click('input[name=email]')
+    await page.type('input[name=email]', 'test@test.com')
+    await page.click('input[name=password]')
+    await page.type('input[name=password]', 'test')
     await page.click('button[type=submit]')
     const element = await page.$("div[name=Greeting]");
     await page.evaluate(element => { element.innerText.includes("Welcome")}, element);

@@ -11,6 +11,8 @@ import CreateIcon from '@material-ui/icons/Create';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 
+
+
 function UserBox(props) {
      
     const [operation, setOperation] = useState("NONE");
@@ -59,8 +61,8 @@ function UserBox(props) {
 
    if(props.currUser.role === 'ADMIN'){
     //
-    const questionButtons = [(<Button type="submit" name="okay">Okay<CheckIcon/></Button>),(<Button value="NONE" onClick={e => setOperation("NONE")}><CancelIcon/> Cancel</Button>),null,null]
-    const defaultButtons =[null,null,(<Button value="EDIT" name="edit" onClick={e=>setOperation("EDIT")}><CreateIcon/>Edit</Button>),(<Button value="DELETE" name="delete" onClick={e=>setOperation("DELETE")}>Delete<DeleteIcon/></Button>)]
+    const questionButtons = [(<Button type="submit" name="okay">Okay<CheckIcon/></Button>),(<Button value="NONE" onClick={e => setOperation("NONE")}> Cancel<CancelIcon/></Button>),null,null]
+    const defaultButtons =[null,null,(<Button value="EDIT" name="edit" onClick={e=>setOperation("EDIT")}>Edit<CreateIcon/></Button>),(<Button value="DELETE" name="delete" onClick={e=>setOperation("DELETE")}>Delete<DeleteIcon/></Button>)]
     
     let chosenButtons = [];
     
@@ -69,7 +71,7 @@ function UserBox(props) {
 
     let boxValues = []
 
-    const inputAreas =[(<TextField value={name} name="name" onChange={e => setName(e.target.value)}/>),(<TextField value={mail} onChange={e => setMail(e.target.value)}/>),( <Select id="roles" value={role} onChange={(e) => setRole(e.target.value)} name="roles"><option value="USER">user</option><option value="ADMIN">admin</option></Select>)]
+    const inputAreas =[(<TextField value={name} name="name" onChange={e => setName(e.target.value)}/>),(<TextField value={mail} onChange={e => setMail(e.target.value)}/>),( <Select id="roles"  value={role} onChange={(e) => setRole(e.target.value)} name="roles"><option value="USER">user</option><option value="ADMIN">admin</option></Select>)]
     const defaultNames=[(props.user? props.user.name: "Loading"),(props.user ? props.user.email: "Loading"),( props.user ? props.user.role: "Loading")]
 
     if(operation ==="EDIT") boxValues=inputAreas
@@ -84,7 +86,7 @@ function UserBox(props) {
     <form onSubmit={handleSubmit} >
     <span>Name: {boxValues[0]}</span>
     <span>Mail: {boxValues[1]}</span>
-    <span>Role: {boxValues[2]}</span>
+    <span className={styl.roleSelect}>Role: {boxValues[2]}</span>
     {operation==="DELETE" ? (<span>Are You sure?<br/></span>) : null}
     <div>
     {chosenButtons}

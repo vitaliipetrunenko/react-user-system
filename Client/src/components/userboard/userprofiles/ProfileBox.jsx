@@ -44,8 +44,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
   }
 
     }
-    const questionButtons = [(<Button type="submit" name="okay"><CheckIcon/>Okay</Button>),(<Button value="NONE" onClick={e => setOperation("NONE")}><CancelIcon/> Cancel</Button>),null,null]
-    const defaultButtons =[null,null,(<Button value="EDIT" name="edit" onClick={e=>setOperation("EDIT")}><CreateIcon/>Edit</Button>),(<Button value="DELETE" name="delete" onClick={e=>setOperation("DELETE")}>Delete<DeleteIcon/></Button>)]
+    const questionButtons = [(<Button type="submit" name="okay">Okay<CheckIcon/></Button>),(<Button value="NONE" onClick={e => setOperation("NONE")}>Cancel<CancelIcon/> </Button>),null,null]
+    const defaultButtons =[null,null,(<Button value="EDIT" name="edit" onClick={e=>setOperation("EDIT")}>Edit<CreateIcon/></Button>),(<Button value="DELETE" name="delete" onClick={e=>setOperation("DELETE")}>Delete<DeleteIcon/></Button>)]
     
     let chosenButtons = [];
     
@@ -54,7 +54,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
     let boxValues = []
 
-    const inputAreas =[(<TextField value={name} name="name" onChange={e => setName(e.target.value)}/>),(<TextField value={surname} onChange={e => setSurname(e.target.value)}/>),(<TextField type="number" value={age} onChange={e => setAge(parseInt(e.target.value))}/>)]
+    const inputAreas =[(<TextField value={name} id="name" name="name" onChange={e => setName(e.target.value)}/>),(<TextField value={surname} onChange={e => setSurname(e.target.value)}/>),(<TextField type="number" value={age} onChange={e => setAge(parseInt(e.target.value))}/>)]
     const defaultNames=[(props.name ? props.name: "Loading"),(props.surname ? props.surname: "Loading"),(props.age ? props.age: "Loading")]
 
     if(operation ==="EDIT") boxValues=inputAreas
@@ -65,7 +65,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
         
             {operation==="NONE"?<p><a><img alt={""} src='http://mymbs.co.id/public/upload/image/user/user.png'></img></a></p> :null}
             <form onSubmit={handleSubmit} >
-            <span>Name: {boxValues[0]}</span>
+            <span name="name">Name: {boxValues[0]}</span>
             <span>Surname: {boxValues[1]}</span>
             <span>Age: {boxValues[2]}</span>
             {operation==="DELETE" ? (<span>Are You sure?<br/></span>) : null}

@@ -24,15 +24,8 @@ function AppMain(props) {
           clearToken()
         }
         else{
-
           props.setUserAC(result)
           props.setTokenAC(renewToken(result.token,result.email))
-
-          getProfiles(result.email).then((result)=>{
-            props.setProfilesAC(result)
-          })
-          
-          
         }
       })
 
