@@ -1,5 +1,5 @@
 import React from 'react'
-import {getByText, queryAllByDisplayValue, render, waitFor} from '@testing-library/react'
+import {render, waitFor} from '@testing-library/react'
 import {BrowserRouter as Router } from 'react-router-dom'
 import userEvent from '@testing-library/user-event'
 import AuthFormHOC from './LoginForm'

@@ -1,13 +1,11 @@
-import React, { useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import { loginUser, regUser,getProfiles, profileChange } from "../../apiCalls/apiCalls";
-import PropTypes from "prop-types";
-import { setUserAC, setProfilesAC } from "../../redux/actionCreators";
+import React from "react";
+import { Formik, Form} from "formik";
+import {getProfiles, profileChange } from "../../apiCalls/apiCalls";
 import { connect } from "react-redux";
 import FormikMaterialTextField from "./common/FormikMaterialTextField";
-import styl from "./styles/Login.module.css";
-import { Button, Radio } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { OfflinePinSharp } from '@material-ui/icons/'
+import { setProfilesAC } from './../../redux/actionCreators'
 
 
 function validate (values,operation){

@@ -77,9 +77,6 @@ async function authProcess(user,props,operation){
   
     }
 
-
-
-
 const AuthForm = (props) => {
   const [operation, setOperation] = useState("Login");
   return (
@@ -87,9 +84,7 @@ const AuthForm = (props) => {
       initialValues={{ email: "", password: "", name: "" }}
       validate={(values)=>validate(values,operation)}
       onSubmit={ async (user) => authProcess(user,{...props},operation) }
-    >
-      
-        
+    > 
           <Form className={styl.formikForm}>
             <div>
             Email:<br/>
@@ -100,9 +95,7 @@ const AuthForm = (props) => {
             <div>
             Password:<br/>
             <FormikMaterialTextField data-testid="passF" name="password" /><br/>
-         
             </div>
-
             <div>
             <label>
               <Radio
@@ -113,9 +106,7 @@ const AuthForm = (props) => {
                 value="sign up"
               />
               Sign up
-              
             </label>
-
 
             <label>
               <Radio
@@ -137,8 +128,6 @@ const AuthForm = (props) => {
             }
             <Button data-testid="submitter" type="submit"> <OfflinePinSharp />  </Button>
           </Form>
-        
-
     </Formik>
   );
 };
@@ -146,10 +135,8 @@ const AuthForm = (props) => {
 AuthForm.propTypes = {
     setToken: PropTypes.func.isRequired,
   };
-  
   let mapStateToProps = (state, ownProps) => ({
     setToken: ownProps.setToken,
   });
-
   let AuthFormHOC = connect(mapStateToProps, { setUserAC, setProfilesAC })(AuthForm);
 export default AuthFormHOC;

@@ -1,12 +1,9 @@
 import React from 'react'
-import {act, getByText, queryAllByDisplayValue, render, waitFor} from '@testing-library/react'
+import { render, waitFor} from '@testing-library/react'
 import {BrowserRouter as Router } from 'react-router-dom'
 import userEvent from '@testing-library/user-event'
 import {createStore,combineReducers } from "redux";
-
-
 import * as Calls from './../../../apiCalls/apiCalls'
-
 import { Provider } from 'react-redux';
 import profileData from './../../../redux/profilesReducer';
 import authData from './../../../redux/authReducer';
@@ -66,11 +63,6 @@ it('Renders userbox and shows user',async () => {
     userEvent.type(profileBox.getAllByRole('textbox',{name:"name"})[0],"edit")
      userEvent.click(profileBox.getAllByText("Okay")[0])
     expect(profileBox.getByDisplayValue("testnameedit")).toBeInTheDocument()
-    
-       // expect(profileBox.getAllByRole('textbox',{name:"name"}).textContent()).toMatch(/(edit)/i) 
-        
-      
-        
   })
 
  

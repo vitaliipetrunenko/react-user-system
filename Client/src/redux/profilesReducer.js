@@ -1,37 +1,18 @@
-const SET_PROFILES = "SET-PROFILES"
+const SET_PROFILES = "SET-PROFILES";
 
 let defaultProfiles = {
+  currProfiles: [],
+};
 
-    currProfiles:[]
-            
-            
-           
-            
-          
-
-
-    
-}
-
-
-
-export const profileReducer = (state=defaultProfiles,action)=>{
-    
-   
-    switch(action.type){
-        case SET_PROFILES:
-
-                return({
-                    ...state,currProfiles: [...action.profiles]
-                })
-            
-        default:
-            return state
-
-    }
-    
-    
-
-
-}
+export const profileReducer = (state = defaultProfiles, action) => {
+  switch (action.type) {
+    case SET_PROFILES:
+      return {
+        ...state,
+        currProfiles: [...action.profiles],
+      };
+    default:
+      return state;
+  }
+};
 export default profileReducer;
