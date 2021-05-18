@@ -1,17 +1,12 @@
 const SET_USER = "SET-USER"
 const SET_TOKEN = "SET-TOKEN"
 
-let defaultUsers = {
+export let defaultUsers = {
 
     currUser:{
-            
+        email:"testmail"
             },
-           
             
-          
-
-
-    
 }
 
 

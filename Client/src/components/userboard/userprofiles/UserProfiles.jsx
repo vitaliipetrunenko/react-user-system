@@ -6,7 +6,7 @@ import { getProfiles, profileChange } from "../../../apiCalls/apiCalls"
 
 import styl from './UserProfiles.module.css'
 import ProfileBoxHOC from "./ProfileBox"
-import { Add } from "css.gg"
+
 import { Button, TextField } from "@material-ui/core"
 import CancelIcon from '@material-ui/icons/Cancel';
 import CheckIcon from '@material-ui/icons/Check';

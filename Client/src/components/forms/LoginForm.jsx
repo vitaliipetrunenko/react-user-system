@@ -93,20 +93,20 @@ const AuthForm = (props) => {
           <Form className={styl.formikForm}>
             <div>
             Email:<br/>
-            <FormikMaterialTextField name="email" /><br/>
+            <FormikMaterialTextField data-testid="emailF" name="email" /><br/>
   
             </div>
 
             <div>
             Password:<br/>
-            <FormikMaterialTextField name="password" /><br/>
+            <FormikMaterialTextField data-testid="passF" name="password" /><br/>
          
             </div>
 
             <div>
             <label>
               <Radio
-                type="radio"
+                type="radio" data-testid="opChanger"
                 onChange={(e) => setOperation("Register")}
                 checked={operation === "Register"}
                 name="radio"
@@ -119,7 +119,7 @@ const AuthForm = (props) => {
 
             <label>
               <Radio
-                type="radio"
+                type="radio" 
                 onChange={(e) => setOperation("Login")}
                 checked={operation === "Login"}
                 name="radio"
@@ -131,11 +131,11 @@ const AuthForm = (props) => {
             {operation === "Register" ?( 
                 <div>
             Name:<br/>
-            <FormikMaterialTextField name="name" /><br/>
+            <FormikMaterialTextField name="name" data-testid="nameF"/><br/>
             </div>)
             :null
             }
-            <Button type="submit"> <OfflinePinSharp />  </Button>
+            <Button data-testid="submitter" type="submit"> <OfflinePinSharp />  </Button>
           </Form>
         
 
@@ -148,8 +148,8 @@ AuthForm.propTypes = {
   };
   
   let mapStateToProps = (state, ownProps) => ({
-    state: state,
     setToken: ownProps.setToken,
   });
+
   let AuthFormHOC = connect(mapStateToProps, { setUserAC, setProfilesAC })(AuthForm);
 export default AuthFormHOC;

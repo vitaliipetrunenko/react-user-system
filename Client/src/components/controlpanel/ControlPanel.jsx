@@ -3,18 +3,9 @@ import {connect} from 'react-redux'
 import UserBoxHOC from './UserBox';
 import styl from './../userboard/userprofiles/UserProfiles.module.css'
 import Dashboard from '../dashboard/Dashboard';
+import { fetchUsers } from '../../apiCalls/apiCalls';
 
-export async function fetchUsers(method,user=null) {
- 
-  return fetch('/api/admin', {
-    method: method,
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({user})
-  })
-    .then(data => data.json()).catch(err =>{return err})
- }
+
 
 
  function ControlPanel(props) {

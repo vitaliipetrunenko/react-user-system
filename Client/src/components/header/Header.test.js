@@ -1,41 +1,32 @@
-import React from "react";
-import { render, unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
+import React from 'react'
+import Header from './Header'
+import {getByText, queryAllByDisplayValue, render} from '@testing-library/react'
+import {BrowserRouter as Router } from 'react-router-dom'
+import userEvent from '@testing-library/user-event'
 
-import Header from "./Header";
-
-const currUserAdmin ={
-    email:"testmail1",
-    role:"ADMIN"
-}
-const currUser ={
-    email:"testmail2",
-    role:"USER"
-}
+const mockClearToken = jest.fn();
+    
 
 
-let container = null;
-beforeEach(() => {
+it('Renders header', () => {
+    const header = render(<Router>
+    <Header currUser={{role:"USER",email:"testmail"}}/>
+    </Router>, { initialState: {} })
   
-  container = document.createElement("div");
-  document.body.appendChild(container);
-});
+    expect(header.container).toBeInTheDocument()
+  })
 
-afterEach(() => {
-
-  unmountComponentAtNode(container);
-  container.remove();
-  container = null;
-});
-
-it("renders with or without a name", () => {
-  act(() => {
-    render(<Header currUser = {currUserAdmin} />, container);
-  });
-  expect(container.textContent).toInclude("Control","testmail1");
-
-  act(() => {
-    render(<Header currUser = {currUser} />, container);
-  });
-  expect(container.textContent).not.toInclude("Control");
-});
+it('Clears token',()=>{
+    const header = render(<Router>
+        <Header clearToken={mockClearToken}  currUser={{role:"USER",email:"testmail"}}/>
+        </Router>, { initialState: {} })
+        userEvent.click(header.getByText("Log Out"))
+        expect(mockClearToken).toHaveBeenCalled()
+})
+it('Renders header as admin', () => {
+    const header = render(<Router>
+    <Header currUser={{role:"ADMIN",email:"testmail"}}/>
+    </Router>, { initialState: {} })
+  
+    expect(header.getByText("Users")).toBeInTheDocument()
+  })

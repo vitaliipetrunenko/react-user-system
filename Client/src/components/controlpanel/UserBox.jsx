@@ -1,14 +1,15 @@
 import React,{ useState} from 'react';
 import {connect} from 'react-redux'
-import {fetchUsers} from './ControlPanel'
+
 import styl from './../userboard/userprofiles/UserProfiles.module.css'
 import { NavLink } from 'react-router-dom';
-import { Check, Close, Pen, Trash } from 'css.gg'
+
 import { Button, Select, TextField } from '@material-ui/core';
 import CancelIcon from '@material-ui/icons/Cancel';
 import CheckIcon from '@material-ui/icons/Check';
 import CreateIcon from '@material-ui/icons/Create';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { fetchUsers } from '../../apiCalls/apiCalls';
 
 
 
@@ -71,7 +72,7 @@ function UserBox(props) {
 
     let boxValues = []
 
-    const inputAreas =[(<TextField value={name} name="name" onChange={e => setName(e.target.value)}/>),(<TextField value={mail} onChange={e => setMail(e.target.value)}/>),( <Select id="roles"  value={role} onChange={(e) => setRole(e.target.value)} name="roles"><option value="USER">user</option><option value="ADMIN">admin</option></Select>)]
+    const inputAreas =[(<TextField value={name} name="name" id="name" label="name"  onChange={e => setName(e.target.value)}/>),(<TextField value={mail} onChange={e => setMail(e.target.value)}/>),( <Select id="roles"  value={role} onChange={(e) => setRole(e.target.value)} name="roles"><option value="USER">user</option><option value="ADMIN">admin</option></Select>)]
     const defaultNames=[(props.user? props.user.name: "Loading"),(props.user ? props.user.email: "Loading"),( props.user ? props.user.role: "Loading")]
 
     if(operation ==="EDIT") boxValues=inputAreas
@@ -84,7 +85,7 @@ function UserBox(props) {
    state: {wantedProfile:props.user.email}  
  }}><img alt={""} src='http://mymbs.co.id/public/upload/image/user/user.png'></img></NavLink></p>:null}
     <form onSubmit={handleSubmit} >
-    <span>Name: {boxValues[0]}</span>
+    <span label="name" name="name">Name: {boxValues[0]}</span>
     <span>Mail: {boxValues[1]}</span>
     <span className={styl.roleSelect}>Role: {boxValues[2]}</span>
     {operation==="DELETE" ? (<span>Are You sure?<br/></span>) : null}

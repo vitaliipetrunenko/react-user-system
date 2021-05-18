@@ -59,14 +59,6 @@ export async function loginUser(credentials, method) {
       .then(data => data.json())
   }
   
-  export function  getStats(){
-    alert("alert")
-    return fetch('/api/stats', {
-      method: 'GET',
-    })
-      .then(data => data.json())
-  }
-  
   export async function profileChange(profile,method) {
     return fetch('/api/profiles', {
       method: method,
@@ -76,4 +68,26 @@ export async function loginUser(credentials, method) {
       body: JSON.stringify(profile)
     })
       .then(data => data.json())
+   }
+
+   export function  getStats(){
+    return fetch('/api/stats',{method:"POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body:null
+  }).then(data => 
+        data.json())
+  }
+
+  export async function fetchUsers(method,user=null) {
+ 
+    return fetch('/api/admin', {
+      method: method,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({user})
+    })
+      .then(data => data.json()).catch(err =>{return err})
    }
