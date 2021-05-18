@@ -16,6 +16,7 @@ import ControlPanelHOC from './ControlPanel';
 const renderWithRedux = (component,{
   defaultUsers,store = createStore(authReducer,{authData:{currUser:{
     
+    
     email:"test",
     role:"ADMIN"
 }}})

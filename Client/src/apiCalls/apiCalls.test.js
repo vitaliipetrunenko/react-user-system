@@ -63,3 +63,5 @@ it('loginUser', async () => {
     const value = await fetchUsers("POST");
     expect(value.value).toBe("TEST");
  })
+
+ 

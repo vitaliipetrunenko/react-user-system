@@ -55,3 +55,4 @@ it("Renders userprofiles and shows profiles", async () => {
     expect(userProfiles.getByText("Name: user2")).toBeInTheDocument();
   });
 });
+

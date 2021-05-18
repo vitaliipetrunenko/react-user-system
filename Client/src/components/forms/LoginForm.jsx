@@ -38,7 +38,7 @@ function validate (values,operation){
 
 async function authProcess(user,props,operation){
     
-        console.log(user)
+       
       if (operation === "Register") {
           const regResponse = await regUser(
       {
@@ -49,7 +49,7 @@ async function authProcess(user,props,operation){
       },
       "POST"
     );
-      console.log(regResponse)
+   
     if (regResponse === false) {
       alert("Email already registered");
     }

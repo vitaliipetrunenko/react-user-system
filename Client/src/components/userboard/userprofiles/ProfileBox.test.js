@@ -26,6 +26,7 @@ const renderWithRedux = (component,{
 
 
 
+
 it('Renders userbox and shows user',async () => {
     
   Calls.getProfiles = jest.fn().mockImplementation(() => Promise.resolve(

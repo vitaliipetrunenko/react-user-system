@@ -1,5 +1,5 @@
 import React from 'react'
-import {act, getByText, queryAllByDisplayValue, render, waitFor} from '@testing-library/react'
+import { render, waitFor} from '@testing-library/react'
 import {BrowserRouter as Router } from 'react-router-dom'
 import userEvent from '@testing-library/user-event'
 import {createStore,combineReducers } from "redux";
@@ -19,6 +19,7 @@ const renderWithRedux = (component,{
   defaultUsers,store = createStore(authData,{authData:{currUser:{email:"mail",role:"ADMIN"}}})
    } = {}) => {
 
+    
   return {
     ...render(<Provider store={store}>{component}</Provider>)
 

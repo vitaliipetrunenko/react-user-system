@@ -31,3 +31,4 @@ it("Renders app", async () => {
   );
   expect(app.container).toBeInTheDocument();
 });
+

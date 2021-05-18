@@ -6,7 +6,7 @@ import Userboard, { AdminUserboard } from "./Userboard";
 import { Provider } from "react-redux";
 import store from "./../../redux/redux-store";
 import { createMemoryHistory } from "history";
-
+describe("UserBoard",()=>{
 it("Renders userboard", async () => {
   const history = createMemoryHistory();
   const state = { wantedProfile: "mail" };
@@ -42,3 +42,4 @@ it("Renders admin userboard", async () => {
     expect(UserBoard.container).toBeInTheDocument();
   });
 });
+})

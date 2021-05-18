@@ -15,7 +15,8 @@ console.log(formik.errors)
             value={formik.values[name]}
             onInput={formik.handleChange}
             onBlur={formik.handleBlur}
-            helperText={formik.errors[name]}        />
+            helperText={formik.errors[name]}
+            InputLabelProps={{shrink: false}}        />
     )
 }
 

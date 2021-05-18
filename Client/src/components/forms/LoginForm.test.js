@@ -98,10 +98,10 @@ it('Renders login and validates data', async () => {
     userEvent.type(passField,"t")
     userEvent.type(nameField,"")
     userEvent.click(submitter)
-
   });
   await waitFor(() => {
     expect(login.getAllByText("Required")[1]).toBeInTheDocument()
   })
 })
+
 
