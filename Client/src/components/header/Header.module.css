@@ -26,6 +26,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 150px;
+    padding-left: 5px;
 }
 .User img{
     max-width:30px;
