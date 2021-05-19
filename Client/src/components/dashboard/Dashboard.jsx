@@ -28,7 +28,7 @@ export default function Dashboard() {
         <br /> <span>{stats.profiles}</span>
       </div>{" "}
       <div>
-        Profiles older than 18:
+        Profiles over 18:
         <br /> <span>{stats.matureProfiles}</span>
       </div>
     </div>

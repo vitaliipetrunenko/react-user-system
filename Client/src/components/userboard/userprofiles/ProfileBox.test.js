@@ -18,14 +18,8 @@ const renderWithRedux = (component,{
 
   return {
     ...render(<Provider store={store}>{component}</Provider>)
-
-  }
+ }
 }
-  
-
-
-
-
 
 it('Renders userbox and shows user',async () => {
     

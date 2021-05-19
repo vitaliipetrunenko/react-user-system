@@ -36,7 +36,7 @@ function UserProfiles(props) {
     />
   ));
   return (
-    <div>
+    <div className="contentBlock">
       <div className={styl.Userboard}>
         <div name="Greeting">
           Welcome, {props.currUser.email}!<br />

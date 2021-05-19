@@ -39,7 +39,7 @@ function AppMain(props) {
             currUser={props.state.authData.currUser}
             clearToken={clearToken}
           />
-          <Switch>
+          <Switch >
             <Route exact path="/">
               <Userboard state={props.state} clearToken={clearToken} />
             </Route>

@@ -18,7 +18,7 @@ function ControlPanel(props) {
       <UserBoxHOC key={Users[i]._id} setUsers={setUsers} user={Users[i]} />
     ));
     return (
-      <div>
+      <div className="contentBlock">
         <Dashboard />
         <div className={styl.boxGrid}>{UserList}</div>
       </div>

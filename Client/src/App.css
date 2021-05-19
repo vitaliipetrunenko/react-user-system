@@ -2,6 +2,11 @@
 html{
   
   background-color: #F7F7FC;
+  overflow-x: hidden;
+}
+
+.contentBlock{
+  overflow-y:scroll;
 }
 .App {
   text-align: center;
@@ -48,6 +53,8 @@ html{
 }
 .wrapper {
   padding: 0px;
+  
+
 }
 button{
   font-family: 'Poppins', sans-serif;
