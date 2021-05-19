@@ -5,8 +5,16 @@ html{
   overflow-x: hidden;
 }
 
-.contentBlock{
-  overflow-y:scroll;
+.LoaderWrap{
+  width: 100vw;
+  height: 70vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.LoaderWrap div{
+  height: 70px !important;
+  width: 70px !important;
 }
 .App {
   text-align: center;

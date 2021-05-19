@@ -1,10 +1,13 @@
 import { connect } from "react-redux";
 import React, { useEffect, useState } from "react";
-import { setProfilesAC } from "./../../../redux/actionCreators";
+import {
+  setProfilesAC,
+  setLoadingTrueAC,
+} from "./../../../redux/actionCreators";
 import { getProfiles } from "../../../apiCalls/apiCalls";
 import styl from "./UserProfiles.module.css";
 import ProfileBoxHOC from "./ProfileBox";
-import { Button } from "@material-ui/core";
+import { Button, CircularProgress } from "@material-ui/core";
 import CancelIcon from "@material-ui/icons/Cancel";
 import CheckIcon from "@material-ui/icons/Check";
 import CreateIcon from "@material-ui/icons/Create";
@@ -17,8 +20,7 @@ function UserProfiles(props) {
   let username = props.User ? props.User : props.currUser.email;
 
   useEffect(() => {
-    props.setProfilesAC([]);
-
+    props.setLoadingTrueAC();
     getProfiles(username).then((profiles) => {
       console.log("setting from userProfiles");
       props.setProfilesAC(profiles);
@@ -61,7 +63,13 @@ function UserProfiles(props) {
           </Button>
         )}
       </div>
-      <div className={styl.boxGrid}>{userboxes}</div>
+      {props.isLoadingProfiles ? (
+        <div className="LoaderWrap">
+          <CircularProgress />
+        </div>
+      ) : (
+        <div className={styl.boxGrid}> {userboxes}</div>
+      )}
     </div>
   );
 }
@@ -70,8 +78,12 @@ let mapStateToProps = (state, ownProps) => {
   return {
     currUser: state.authData.currUser,
     profileList: state.profileData.currProfiles,
+    isLoadingProfiles: state.profileData.isLoading,
   };
 };
 
-let HocUserProfiles = connect(mapStateToProps, { setProfilesAC })(UserProfiles);
+let HocUserProfiles = connect(mapStateToProps, {
+  setProfilesAC,
+  setLoadingTrueAC,
+})(UserProfiles);
 export default HocUserProfiles;

@@ -60,7 +60,7 @@ function AppMain(props) {
 }
 
 let mapStateToProps = (state) => ({
-  state: state,
+  state
 });
 
 const App = connect(mapStateToProps, { setUserAC, setTokenAC, setProfilesAC })(

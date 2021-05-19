@@ -11,7 +11,7 @@
     flex-wrap: wrap;
     background-color: #F7F7FC;
 }  
-.Dashboard div{
+.Dashboard .DashBox{
     background-color: rgb(255, 255, 255);
     text-align: center;
     flex-direction: column;
@@ -27,7 +27,7 @@
     /* box-shadow: 0px 5px 5px rgb(172, 172, 172) ; */
     
 }
-.Dashboard div span{
+.Dashboard .DashBox span{
     font-size: x-large;
 
 }
