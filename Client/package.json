@@ -10,6 +10,7 @@
     "@svgr/webpack": "5.5.0",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
+    "@testing-library/react-hooks": "^6.0.0",
     "@testing-library/user-event": "^12.8.3",
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.5.0",
@@ -86,7 +87,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test-jest": "jest",
-    "test": "node scripts/test.js --coverage",
+    "test": "node scripts/test.js --coverage --watchAll",
     "buildcopy": "npm run build && xcopy /E /H /C /I build .\\..\\api\\build\\"
   },
   "eslintConfig": {
@@ -119,7 +120,8 @@
     ],
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
-      "!src/**/*.d.ts"
+      "!src/**/*.d.ts",
+      "!src/index.js"
     ],
     "setupFiles": [
       "react-app-polyfill/jsdom"

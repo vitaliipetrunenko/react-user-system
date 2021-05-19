@@ -44,7 +44,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
     }
     const questionButtons = [(<Button type="submit" name="okay">Okay<CheckIcon/></Button>),(<Button value="NONE" onClick={e => setOperation("NONE")}>Cancel<CancelIcon/> </Button>),null,null]
-    const defaultButtons =[null,null,(<Button value="EDIT" name="edit" onClick={e=>setOperation("EDIT")}>Edit<CreateIcon/></Button>),(<Button value="DELETE" name="delete" onClick={e=>setOperation("DELETE")}>Delete<DeleteIcon/></Button>)]
+    const defaultButtons =[null,null,(<Button value="EDIT" id="edit" name="edit" onClick={e=>setOperation("EDIT")}>Edit<CreateIcon/></Button>),(<Button value="DELETE" name="delete" onClick={e=>setOperation("DELETE")}>Delete<DeleteIcon/></Button>)]
     
     let chosenButtons = [];
     

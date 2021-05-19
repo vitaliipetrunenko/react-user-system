@@ -83,18 +83,18 @@ const AuthForm = (props) => {
     <Formik className={styl.formikWrap}
       initialValues={{ email: "", password: "", name: "" }}
       validate={(values)=>validate(values,operation)}
-      onSubmit={ async (user) => authProcess(user,{...props},operation) }
+      onSubmit={ (user) => authProcess(user,{...props},operation) }
     > 
           <Form className={styl.formikForm}>
             <div>
             Email:<br/>
-            <FormikMaterialTextField data-testid="emailF" name="email" /><br/>
+            <FormikMaterialTextField label="emailF" name="email" id="email" /><br/>
   
             </div>
 
             <div>
             Password:<br/>
-            <FormikMaterialTextField data-testid="passF" name="password" /><br/>
+            <FormikMaterialTextField id="pass" label="passF" name="password" /><br/>
             </div>
             <div>
             <label>
@@ -122,7 +122,7 @@ const AuthForm = (props) => {
             {operation === "Register" ?( 
                 <div>
             Name:<br/>
-            <FormikMaterialTextField name="name" data-testid="nameF"/><br/>
+            <FormikMaterialTextField name="name" id="name" label="nameF" /><br/>
             </div>)
             :null
             }

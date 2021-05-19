@@ -40,7 +40,7 @@ function UserProfiles(props) {
   return (
     <div className="contentBlock">
       <div className={styl.Userboard}>
-        <div name="Greeting">
+        <div id="Greeting">
           Welcome, {props.currUser.email}!<br />
           Browsing, {username} profiles{" "}
         </div>

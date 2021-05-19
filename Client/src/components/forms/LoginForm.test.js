@@ -1,5 +1,5 @@
 import React from 'react'
-import {render, waitFor} from '@testing-library/react'
+import {render, screen, waitFor} from '@testing-library/react'
 import {BrowserRouter as Router } from 'react-router-dom'
 import userEvent from '@testing-library/user-event'
 import AuthFormHOC from './LoginForm'
@@ -9,6 +9,7 @@ import * as Calls  from "../../apiCalls/apiCalls";
 
 import {createStore} from "redux"
 import { Provider } from 'react-redux'
+import { act } from 'react-dom/test-utils'
 
 const mockSetToken = jest.fn();
     
@@ -34,13 +35,16 @@ it('Renders login and logs in', async () => {
     <AuthFormHOC setToken={mockSetToken}/>
     </Router>, { initialState: {} })
   
-    expect(login.container).toBeInTheDocument()
-    const emailField = login.getByTestId("emailF")
-    const passField = login.getByTestId("passF")
+    //expect(login.container).toBeInTheDocument()
+    const emailField = login.getByRole("textbox",{name: "emailF"})
+    const passField = login.getByRole("textbox",{name: "passF"})
     const submitter = login.getByTestId("submitter")
+    await act(()=>{
     userEvent.type(emailField,"test@test.com")
     userEvent.type(passField,"test")
-    userEvent.click(submitter)
+  })
+    //expect(login.getByText("test@test.com")).toBeInTheDocument()
+    screen.debug(emailField)
   })
 
   
@@ -54,8 +58,8 @@ it('Renders login and registers', async () => {
   </Router>, { initialState: {} })
 
   expect(login.container).toBeInTheDocument()
-  const emailField = login.getByTestId("emailF")
-  const passField = login.getByTestId("passF")
+  const emailField = login.getByRole("textbox",{name: "emailF"})
+  const passField = login.getByRole("textbox",{name: "passF"})
   
   const opChanger = login.getByTestId("opChanger")
   const submitter = login.getByTestId("submitter")
@@ -64,12 +68,13 @@ it('Renders login and registers', async () => {
 
   
 
-    const nameField = login.getByTestId("nameF")
+  const nameField = login.getByRole("textbox",{name: "nameF"})
+  
     userEvent.type(emailField,"test2@test.com")
     userEvent.type(passField,"test")
     userEvent.type(nameField,"test")
     userEvent.click(submitter)
-
+    
  
 })
 
@@ -83,8 +88,8 @@ it('Renders login and validates data', async () => {
   </Router>, { initialState: {} })
 
   expect(login.container).toBeInTheDocument()
-  const emailField = login.getByTestId("emailF")
-  const passField = login.getByTestId("passF")
+  const emailField = login.getByRole("textbox",{name: "emailF"})
+  const passField = login.getByRole("textbox",{name: "passF"})
   
   const opChanger = login.getByTestId("opChanger")
   const submitter = login.getByTestId("submitter")
@@ -93,7 +98,7 @@ it('Renders login and validates data', async () => {
 
   
    await waitFor(() => {
-    const nameField = login.getByTestId("nameF")
+    const nameField = login.getByRole("textbox",{name: "nameF"})
     userEvent.type(emailField,"test2test")
     userEvent.type(passField,"t")
     userEvent.type(nameField,"")

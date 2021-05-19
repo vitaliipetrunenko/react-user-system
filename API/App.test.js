@@ -34,7 +34,7 @@ beforeAll(async () => {
   browser = await puppeteer.launch(
     {
       headless: false,
-      slowMo: 30, 
+      slowMo: 100, 
     }
   )
 
@@ -51,7 +51,7 @@ describe('Login', () => {
     await page.click('input[name=password]')
     await page.type('input[name=password]', 'pass')
     await page.click('button[type=submit]')
-    const element = await page.$("div[name=Greeting]");
+    const element = await page.$("div[id=Greeting]");
     await page.evaluate(element => { element.innerText.includes("Welcome")}, element);
     
   }, 1600000);
@@ -103,7 +103,7 @@ describe('Admin', () => {
     await page.click('input[name=password]')
     await page.type('input[name=password]', 'test')
     await page.click('button[type=submit]')
-    const element = await page.$("div[name=Greeting]");
+    const element = await page.$("div[id=Greeting]");
     await page.evaluate(element => { element.innerText.includes("Welcome")}, element);
     
   }, 1600000);
@@ -119,7 +119,7 @@ describe('Admin control2', () => {
   test('Admins can see user`s profiles', async () => {
     await page.waitForSelector('a[name=user]');
     await page.click('a[name=user]')
-    const element = await page.$("div[name=Greeting]");
+    const element = await page.$("div[id=Greeting]");
     await page.evaluate(element => { element.innerText.includes("Welcome")}, element);
   }, 1600000);
 });

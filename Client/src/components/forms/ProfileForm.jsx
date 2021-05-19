@@ -34,7 +34,6 @@ function validate (values,operation){
 }
 
 async function profileProcess(profile,User,setProfilesACprop){
-        console.log("User:",User)
         const addProfileResult = await profileChange(
             {name:profile.name,surname:profile.surname,age:profile.age,author:User},"PUT"
         )
@@ -59,23 +58,23 @@ const ProfileForm = (props) => {
           <Form>
             <div>
             Name:<br/>
-            <FormikMaterialTextField name="name" /><br/>
+            <FormikMaterialTextField name="name" id="nameA" label="nameF" /><br/>
   
             </div>
 
             <div>
             Surname:<br/>
-            <FormikMaterialTextField name="surname" /><br/>
+            <FormikMaterialTextField name="surname" id="surnameA" label="surnameF" /><br/>
          
             </div>
 
             <div>
             Age:<br/>
-            <FormikMaterialTextField type="number" name="age" /><br/>
+            <FormikMaterialTextField type="number" id="ageA" name="age" label="ageF" /><br/>
          
             </div> 
            
-            <Button type="submit"> <OfflinePinSharp />  </Button>
+            <Button type="submit" data-testid="submitter"> <OfflinePinSharp />  </Button>
           </Form>
         
 
