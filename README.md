@@ -16,8 +16,14 @@ Project is split into 2 directories:\
 
 Docker:
 
--In the beginning, docker-compose was used, but now project is ran as a single image\
--Lightweight node is used\
+- In the beginning, docker-compose was used, but now project is ran as a single image\
+- Lightweight alpine-node is used\
+
+Heroku:
+
+- At first app was published through container registry, but now it simply runs as API directory repository\
+- Link "https://reactserver0608.herokuapp.com/"
+
 
 Entities:
 
@@ -30,7 +36,7 @@ Entities:
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;token: string\
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expiry: number\
 	}\
- }\
+ }
  
  -Profile:\
 {\
@@ -38,5 +44,5 @@ Entities:
 &nbsp;&nbsp;&nbsp;&nbsp;surname: string\
 &nbsp;&nbsp;&nbsp;&nbsp;age: number\
 &nbsp;&nbsp;&nbsp;&nbsp;author: string\
- }\	
+ }	
 
