@@ -11,7 +11,13 @@ Project is split into 2 directories:\
  -API (Front-end build, routing, api, e2e tests)\
 &nbsp;&nbsp;&nbsp;&nbsp;        |- Back-end is powered by express, MongoDB Atlas is used as a db.\
 &nbsp;&nbsp;&nbsp;&nbsp;        |- E2e tests (powered by puppeteer) are ran by "npm run test"\
-&nbsp;&nbsp;&nbsp;&nbsp;        |- Rest-API was 'kinda' used (I reserved all get requests for rendering, otherwise API endpoints have different operations depending on method)\
+&nbsp;&nbsp;&nbsp;&nbsp;        |- Rest-API was 'kinda' used 
+&nbsp;&nbsp;&nbsp;&nbsp;        | (I reserved all get requests for rendering, otherwise API endpoints have different operations depending on method)\
+
+Docker:
+
+-In the beginning, docker-compose was used, but now project is ran as a single image\
+-Lightweight node is used\
 
 Entities:
 
