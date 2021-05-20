@@ -23,5 +23,12 @@ Entities:
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;token: string\
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expiry: number\
 	}\
- }\       
-	
+ }\
+ 
+ -Profile:\
+{\
+&nbsp;&nbsp;&nbsp;&nbsp;name: string\
+&nbsp;&nbsp;&nbsp;&nbsp;surname: string\
+&nbsp;&nbsp;&nbsp;&nbsp;age: number\
+&nbsp;&nbsp;&nbsp;&nbsp;author: string\
+ }\	
