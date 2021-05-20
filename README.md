@@ -24,7 +24,7 @@ Project is split into 2 directories:\
 
 Docker:
 
-- In the beginning, docker-compose was used, but now project is ran as a single image of API project
+- In the beginning, docker-compose was used, but now project is run as a single image of API project
 - Lightweight alpine-node is used
 
 Heroku:
