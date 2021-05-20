@@ -26,6 +26,7 @@ Docker:
 
 - In the beginning, docker-compose was used, but now project is run as a single image of API project
 - Lightweight alpine-node is used
+- Project image is built from Dockerfile in API directory
 
 Heroku:
 
