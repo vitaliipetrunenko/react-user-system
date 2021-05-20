@@ -10,8 +10,9 @@ Project is split into 2 directories:\
   
  -API (Front-end build, routing, api, e2e tests)\
 &nbsp;&nbsp;&nbsp;&nbsp;        |- Back-end is powered by express, MongoDB Atlas is used as a db.\
-&nbsp;&nbsp;&nbsp;&nbsp;        |- E2e tests (powered by puppeteer) are ran by "npm run test"
-	
+&nbsp;&nbsp;&nbsp;&nbsp;        |- E2e tests (powered by puppeteer) are ran by "npm run test"\
+&nbsp;&nbsp;&nbsp;&nbsp;        |- Rest-API was 'kinda' used (I reserved all get requests for rendering, otherwise API endpoints have different operations depending on method)\
+
 Entities:
 
 -User:\
@@ -32,3 +33,4 @@ Entities:
 &nbsp;&nbsp;&nbsp;&nbsp;age: number\
 &nbsp;&nbsp;&nbsp;&nbsp;author: string\
  }\	
+
