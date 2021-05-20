@@ -13,7 +13,14 @@ Project is split into 2 directories:\
 &nbsp;&nbsp;&nbsp;&nbsp;        |- Back-end is powered by express, MongoDB Atlas is used as a db.\
 &nbsp;&nbsp;&nbsp;&nbsp;        |- E2e tests (powered by puppeteer) are ran by "npm run test"\
 &nbsp;&nbsp;&nbsp;&nbsp;        |- Rest-API was 'kinda' used\
-&nbsp;&nbsp;&nbsp;&nbsp;        | (I reserved all get requests for rendering, otherwise API endpoints have different operations depending on method)\
+&nbsp;&nbsp;&nbsp;&nbsp;        | (I reserved all GET requests for rendering(for possible inclusion of static pages into project),\
+&nbsp;&nbsp;&nbsp;&nbsp;        | otherwise API endpoints have different operations depending on method)\
+&nbsp;&nbsp;&nbsp;&nbsp;        |- Tokens are nothing to write home about, \
+&nbsp;&nbsp;&nbsp;&nbsp;        | basic concept is that any user should access site only from a single device\
+&nbsp;&nbsp;&nbsp;&nbsp;        | and after token gen it is hard-coded into User profile in the db, \
+&nbsp;&nbsp;&nbsp;&nbsp;        | when authorizing by token, both token code and expiry are checked, \
+&nbsp;&nbsp;&nbsp;&nbsp;        | and due to tokens being refreshed in db on every login, they are 'kinda' secure
+
 
 Docker:
 
