@@ -37,6 +37,7 @@ Design:
 
 - Used heavily material-UI 
 - Most forms are created with Formik
+- Responsive to some extent
 - I know it's ugly.
 
 Entities:
