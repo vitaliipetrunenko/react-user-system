@@ -4,7 +4,7 @@ import { Server } from "miragejs";
 new Server({
   routes() {
     this.namespace = "api";
-
+    this.logging = false;
     this.post("/*", () => {
       return (JSON.stringify({value:"TEST"}))
       ;

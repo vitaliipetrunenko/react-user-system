@@ -13,13 +13,7 @@ const renderWithRedux = (
   component,
   {
     defaultUsers,
-    store = createStore(rootReducer, {
-      profileList: [
-        { _id: 1, name: "test", author: "mail" },
-        { _id: 2, name: "test2", author: "mail" },
-      ],
-      currUser: { email: "mail", role: "ADMIN" },
-    }),
+    store = createStore(rootReducer, ({})),
   } = {}
 ) => {
   return {

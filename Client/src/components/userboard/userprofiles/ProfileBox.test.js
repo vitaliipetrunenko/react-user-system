@@ -19,7 +19,7 @@ const renderWithRedux = (
   };
 };
 
-it("Renders userbox and shows user", async () => {
+it("Renders profilebox and shows user", async () => {
   Calls.getProfiles = jest.fn().mockImplementation(() =>
     Promise.resolve([
       {
@@ -34,7 +34,7 @@ it("Renders userbox and shows user", async () => {
       },
     ])
   );
-
+  Calls.profileChange = jest.fn().mockImplementation(() =>{ Promise.resolve(true)})
   const profileBox = renderWithRedux(
     <Router>
       <ProfileBoxHOC
@@ -60,6 +60,53 @@ it("Renders userbox and shows user", async () => {
     profileBox.getAllByRole("textbox", { name: "name" })[0],
     "edit"
   );
+  await waitFor(() => {
   userEvent.click(profileBox.getAllByText("Okay")[0]);
-  expect(profileBox.getByDisplayValue("testnameedit")).toBeInTheDocument();
+  })
+  expect(profileBox.container).toBeInTheDocument();
+});
+
+
+
+it("same thing but with delete", async () => {
+  Calls.getProfiles = jest.fn().mockImplementation(() =>
+    Promise.resolve([
+      {
+        name: "user1",
+        _id: 1,
+        author: "mail",
+      },
+      {
+        name: "user2",
+        _id: 2,
+        author: "mail",
+      },
+    ])
+  );
+  Calls.profileChange = jest.fn().mockImplementation(() =>{ Promise.resolve(true)})
+  const profileBox = renderWithRedux(
+    <Router>
+      <ProfileBoxHOC
+        name="testname"
+        surname="testsurname"
+        age="testage"
+        author="testauthor"
+      />
+    </Router>,
+    { initialState: {} }
+  );
+  await waitFor(() => {
+    expect(profileBox.container).toBeInTheDocument();
+    expect(profileBox.getByText("Name: testname")).toBeInTheDocument();
+  });
+  userEvent.click(profileBox.getAllByText("Delete")[0]);
+  await waitFor(() => {
+    expect(profileBox.getByText("Cancel")).toBeInTheDocument();
+  });
+  userEvent.click(profileBox.getAllByText("Cancel")[0]);
+  userEvent.click(profileBox.getAllByText("Delete")[0]);
+  await waitFor(() => {
+  userEvent.click(profileBox.getAllByText("Okay")[0]);
+  })
+  expect(profileBox.container).toBeInTheDocument();
 });

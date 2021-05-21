@@ -18,6 +18,7 @@ function UserBox(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (operation === "EDIT") {
+      
       const changeUserResult = await fetchUsers("PATCH", [
         { name, email: mail, role },
         {
@@ -30,6 +31,7 @@ function UserBox(props) {
       if (changeUserResult === false) {
         alert("duplicate user");
       }
+      
       fetchUsers("POST").then((result) => {
         props.setUsers(result);
       });
@@ -53,11 +55,11 @@ function UserBox(props) {
 
   if (props.currUser.role === "ADMIN") {
     const questionButtons = [
-      <Button type="submit" name="okay">
+      <Button key={1}  type="submit" name="okay">
         Okay
         <CheckIcon />
       </Button>,
-      <Button value="NONE" onClick={(e) => setOperation("NONE")}>
+      <Button key={2} value="NONE" onClick={(e) => setOperation("NONE")}>
         {" "}
         Cancel
         <CancelIcon />
@@ -68,11 +70,12 @@ function UserBox(props) {
     const defaultButtons = [
       null,
       null,
-      <Button value="EDIT" name="edit" onClick={(e) => setOperation("EDIT")}>
+      <Button key={1} value="EDIT" name="edit" onClick={(e) => setOperation("EDIT")}>
         Edit
         <CreateIcon />
       </Button>,
       <Button
+        key={2}
         value="DELETE"
         name="delete"
         onClick={(e) => setOperation("DELETE")}

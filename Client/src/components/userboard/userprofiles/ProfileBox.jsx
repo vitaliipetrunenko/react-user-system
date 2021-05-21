@@ -57,11 +57,11 @@ function ProfileBox(props) {
     }
   };
   const questionButtons = [
-    <Button type="submit" name="okay">
+    <Button key={1} type="submit" name="okay">
       Okay
       <CheckIcon />
     </Button>,
-    <Button value="NONE" onClick={(e) => setOperation("NONE")}>
+    <Button value="NONE" key={2}  onClick={(e) => setOperation("NONE")}>
       Cancel
       <CancelIcon />{" "}
     </Button>,
@@ -71,7 +71,7 @@ function ProfileBox(props) {
   const defaultButtons = [
     null,
     null,
-    <Button
+    <Button key={1} 
       value="EDIT"
       id="edit"
       name="edit"
@@ -80,7 +80,7 @@ function ProfileBox(props) {
       Edit
       <CreateIcon />
     </Button>,
-    <Button
+    <Button key={2} 
       value="DELETE"
       name="delete"
       onClick={(e) => setOperation("DELETE")}

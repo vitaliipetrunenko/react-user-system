@@ -42,16 +42,7 @@ global.localStorage = new LocalStorageMock();
 const rootReducer = combineReducers({ profileData, authData });
 const renderWithRedux = (
   component,
-  {
-    defaultUsers,
-    store = createStore(rootReducer, {
-      profileList: [
-        { _id: 1, name: "test", author: "mail" },
-        { _id: 2, name: "test2", author: "mail" },
-      ],
-      currUser: { email: "mail", role: "ADMIN" },
-    }),
-  } = {}
+  { defaultUsers, store = createStore(rootReducer, {}) } = {}
 ) => {
   return {
     ...render(<Provider store={store}>{component}</Provider>),
@@ -69,6 +60,7 @@ it("Renders app with valid token", async () => {
   await waitFor(() => {
     result.current.setToken(defaultToken);
   });
+
   const app = renderWithRedux(
     <Router>
       <App />
@@ -92,8 +84,9 @@ it("Renders login with invalid token", async () => {
     </Router>,
     { initialState: {} }
   );
-
-  expect(app.container).toBeInTheDocument();
+  await waitFor(() => {
+    expect(app.container).toBeInTheDocument();
+  });
 });
 
 it("Renders app with valid but outdated token", async () => {

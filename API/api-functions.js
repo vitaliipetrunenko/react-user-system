@@ -2,7 +2,6 @@ const crypto = require("crypto")
 const MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://Admin:AdminAdmin@cluster0.chefr.mongodb.net/ReactUsersDB?retryWrites=true&w=majority";
 const mongoClient = new MongoClient(url, { useNewUrlParser: true,useUnifiedTopology: true });
-//mongoClient.setMaxListeners(1);
 const dbClient = mongoClient.connect()
 function getClient(){
     return dbClient
@@ -37,7 +36,6 @@ getUser : function(mail,password) {
 getStatsAPI : function() {
     let responseArray=[];
     let db;
-    console.log("stage 5")
     return getClient().then(client => {
         
         db = client.db("ReactUsersDB");

@@ -20,7 +20,7 @@ router.use('/login', (req, res) => {
     if(req.method==="PUT"){
         
         let newToken = apiFunc.newTokenGen();
-        console.log(newToken);
+       
         apiFunc.submitTokenToDB(req.body.email,newToken).then((result) =>{
             
             
@@ -135,9 +135,9 @@ else if(req.method==="DELETE"){
 
 router.use('/stats', (req, res) => {
     
-    console.log("stage2")
+    
     apiFunc.getStatsAPI().then(results =>{
-       console.log(results)
+      
         res.send(results);
     })
     

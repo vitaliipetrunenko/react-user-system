@@ -1,6 +1,7 @@
 import useToken from "./useToken";
 import { renderHook, act } from "@testing-library/react-hooks";
 import * as Calls from "./../apiCalls/apiCalls";
+import { waitFor } from "@testing-library/react";
 
 let defaultToken = {
   token: "testtoken",
@@ -36,15 +37,15 @@ it("just works", async () => {
     .fn()
     .mockImplementation(() => Promise.resolve(defaultToken));
   const { result } = renderHook(() => useToken());
-  act(() => {
+  await waitFor(() => {
     result.current.setToken(defaultToken);
   });
   expect(result.current.token.token).toBe("testtoken");
-  act(() => {
+  await waitFor(() => {
     result.current.clearToken();
   });
   expect(result.current.token).toBe(undefined);
-  act(() => {
+  await waitFor(() => {
     result.current.renewToken(result.current.token, "mail");
   });
 });
