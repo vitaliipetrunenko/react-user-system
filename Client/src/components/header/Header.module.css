@@ -98,6 +98,14 @@
     .Buttons a{
         width: 90%;
     }
+    .User{
+    display: flex;
+    flex-direction: row;
+    max-width: 95vw;
+    justify-content: flex-start;
+    width: 95vw;
+
+    }
 }
 
 a i{
