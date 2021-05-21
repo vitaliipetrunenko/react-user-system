@@ -6,7 +6,7 @@ Project is split into 2 directories:
 - Client (Front-end source and unit tests)\
 &nbsp;&nbsp;&nbsp;&nbsp;        | - After making changes, project should be compiled with "npm run buildcopy"(works on WIN), to compile it on other systems,\
 &nbsp;&nbsp;&nbsp;&nbsp;        |  build it and manualy transfer build folder to API project directory.\
-&nbsp;&nbsp;&nbsp;&nbsp;        | - Tests cover about 85%, ran by "npm run test"\
+&nbsp;&nbsp;&nbsp;&nbsp;        | - Tests cover about 93%, run by "npm run test"\
 &nbsp;&nbsp;&nbsp;&nbsp;        | - Powered by Redux, but most of the logic is managed by local states
 
 - API (Front-end build, routing, api, e2e tests)\
