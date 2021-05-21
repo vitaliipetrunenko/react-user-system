@@ -1,7 +1,6 @@
 import React from "react";
 import { render, waitFor } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
-import userEvent from "@testing-library/user-event";
 import { createStore, combineReducers } from "redux";
 import * as Calls from "./../../../apiCalls/apiCalls";
 import { Provider } from "react-redux";
@@ -55,4 +54,3 @@ it("Renders userprofiles and shows profiles", async () => {
     expect(userProfiles.getByText("Name: user2")).toBeInTheDocument();
   });
 });
-

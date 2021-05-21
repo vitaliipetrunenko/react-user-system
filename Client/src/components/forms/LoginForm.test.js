@@ -5,8 +5,6 @@ import userEvent from '@testing-library/user-event'
 import AuthFormHOC from './LoginForm'
 import authReducer from '../../redux/authReducer'
 import * as Calls  from "../../apiCalls/apiCalls";
-
-
 import {createStore} from "redux"
 import { Provider } from 'react-redux'
 import { act } from 'react-dom/test-utils'
@@ -35,7 +33,6 @@ it('Renders login and logs in', async () => {
     <AuthFormHOC setToken={mockSetToken}/>
     </Router>, { initialState: {} })
   
-    //expect(login.container).toBeInTheDocument()
     const emailField = login.getByRole("textbox",{name: "emailF"})
     const passField = login.getByRole("textbox",{name: "passF"})
     const submitter = login.getByTestId("submitter")
@@ -43,8 +40,6 @@ it('Renders login and logs in', async () => {
     userEvent.type(emailField,"test@test.com")
     userEvent.type(passField,"test")
   })
-    //expect(login.getByText("test@test.com")).toBeInTheDocument()
-    screen.debug(emailField)
   })
 
   

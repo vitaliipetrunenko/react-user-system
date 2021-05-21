@@ -8,12 +8,12 @@ import { CircularProgress } from "@material-ui/core";
 
 function ControlPanel(props) {
   const [Users, setUsers] = useState([]);
-  const [areUsersLoading,setUsersLoading]= useState(false)
+  const [areUsersLoading, setUsersLoading] = useState(false);
   useEffect(() => {
-    setUsersLoading(true)
+    setUsersLoading(true);
     const getUserList = fetchUsers("POST").then((result) => {
       setUsers(result);
-      setUsersLoading(false)
+      setUsersLoading(false);
     });
   }, []);
   if (props.currUser.role === "ADMIN" && Users) {
@@ -24,12 +24,12 @@ function ControlPanel(props) {
       <div className="contentBlock">
         <Dashboard />
         {areUsersLoading ? (
-        <div className="LoaderWrap">
-          <CircularProgress />
-        </div>
-      ) : (
-        <div className={styl.boxGrid}>{UserList}</div>
-      )}        
+          <div className="LoaderWrap">
+            <CircularProgress />
+          </div>
+        ) : (
+          <div className={styl.boxGrid}>{UserList}</div>
+        )}
       </div>
     );
   } else return <span>You have no access to this page.</span>;

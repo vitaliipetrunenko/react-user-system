@@ -17,7 +17,6 @@ it("Renders header", () => {
   expect(header.container).toBeInTheDocument();
 });
 
-
 it("Clears token", () => {
   const header = render(
     <Router>

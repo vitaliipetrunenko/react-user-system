@@ -9,12 +9,12 @@ export default function Dashboard() {
     profiles: 0,
     matureProfiles: 0,
   });
-  const [areStatsLoading, setStatsLoading] = useState(false)//
+  const [areStatsLoading, setStatsLoading] = useState(false); //
   useEffect(() => {
-    setStatsLoading(true)
+    setStatsLoading(true);
     getStats().then((res) => {
       setStats({ users: res[0], profiles: res[1], matureProfiles: res[2] });
-      setStatsLoading(false);//
+      setStatsLoading(false); //
     });
   }, []);
   return (
@@ -25,17 +25,20 @@ export default function Dashboard() {
       <div className={styl.DashBox}>
         Users:
         <br />
-        <span>{areStatsLoading ? <CircularProgress/> : stats.users}</span>
+        <span>{areStatsLoading ? <CircularProgress /> : stats.users}</span>
       </div>{" "}
       <div className={styl.DashBox}>
         Profiles:
-        <br /> <span>{areStatsLoading ? <CircularProgress/> : stats.profiles}</span>
+        <br />{" "}
+        <span>{areStatsLoading ? <CircularProgress /> : stats.profiles}</span>
       </div>{" "}
       <div className={styl.DashBox}>
         Profiles over 18:
-        <br /> <span>{areStatsLoading ? <CircularProgress/> : stats.matureProfiles}</span>
+        <br />{" "}
+        <span>
+          {areStatsLoading ? <CircularProgress /> : stats.matureProfiles}
+        </span>
       </div>
     </div>
   );
 }
-

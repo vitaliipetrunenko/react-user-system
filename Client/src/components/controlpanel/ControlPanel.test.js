@@ -1,7 +1,6 @@
 import React from 'react'
-import {act, getByText, queryAllByDisplayValue, render, waitFor} from '@testing-library/react'
+import {render, waitFor} from '@testing-library/react'
 import {BrowserRouter as Router } from 'react-router-dom'
-import userEvent from '@testing-library/user-event'
 import {createStore } from "redux";
 
 

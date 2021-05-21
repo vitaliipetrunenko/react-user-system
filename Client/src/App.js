@@ -9,7 +9,7 @@ import { setTokenAC, setUserAC, setProfilesAC } from "./redux/actionCreators";
 import Header from "./components/header/Header";
 import ControlPanelHOC from "./components/controlpanel/ControlPanel";
 import AuthFormHOC from "./components/forms/LoginForm";
-import { getProfiles, loadUserFromToken } from "./apiCalls/apiCalls";
+import { loadUserFromToken } from "./apiCalls/apiCalls";
 
 function AppMain(props) {
   const { token, setToken, clearToken, renewToken, getToken } = useToken();

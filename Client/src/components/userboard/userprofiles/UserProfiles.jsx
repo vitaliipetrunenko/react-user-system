@@ -9,9 +9,7 @@ import styl from "./UserProfiles.module.css";
 import ProfileBoxHOC from "./ProfileBox";
 import { Button, CircularProgress } from "@material-ui/core";
 import CancelIcon from "@material-ui/icons/Cancel";
-import CheckIcon from "@material-ui/icons/Check";
 import CreateIcon from "@material-ui/icons/Create";
-import DeleteIcon from "@material-ui/icons/Delete";
 import ProfileFormHOC from "../../forms/ProfileForm";
 
 function UserProfiles(props) {
@@ -22,7 +20,6 @@ function UserProfiles(props) {
   useEffect(() => {
     props.setLoadingTrueAC();
     getProfiles(username).then((profiles) => {
-      console.log("setting from userProfiles");
       props.setProfilesAC(profiles);
     });
   }, [username]);

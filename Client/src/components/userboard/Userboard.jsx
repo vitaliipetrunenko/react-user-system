@@ -18,7 +18,6 @@ export default function Userboard(props) {
 
 export function AdminUserboard(props) {
   let location = useLocation();
-  console.log(location);
   const [wantedUser, setWantedUser] = useState();
   useEffect(() => {
     setWantedUser(location.state.wantedProfile);
