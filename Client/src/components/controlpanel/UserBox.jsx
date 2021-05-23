@@ -8,6 +8,7 @@ import CheckIcon from "@material-ui/icons/Check";
 import CreateIcon from "@material-ui/icons/Create";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { fetchUsers } from "../../apiCalls/apiCalls";
+import { usrRole,admRole } from "../../redux/roles";
 
 function UserBox(props) {
   const [operation, setOperation] = useState("NONE");
@@ -53,7 +54,7 @@ function UserBox(props) {
     }
   };
 
-  if (props.currUser.role === "ADMIN") {
+  if (props.currUser.role === admRole) {
     const questionButtons = [
       <Button key={1}  type="submit" name="okay">
         Okay
@@ -107,8 +108,8 @@ function UserBox(props) {
         onChange={(e) => setRole(e.target.value)}
         name="roles"
       >
-        <option value="USER">user</option>
-        <option value="ADMIN">admin</option>
+        <option value={usrRole}>user</option>
+        <option value={admRole}>admin</option>
       </Select>,
     ];
     const defaultNames = [

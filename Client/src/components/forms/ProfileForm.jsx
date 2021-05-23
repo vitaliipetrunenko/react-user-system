@@ -6,23 +6,26 @@ import FormikMaterialTextField from "./common/FormikMaterialTextField";
 import { Button } from "@material-ui/core";
 import { OfflinePinSharp } from "@material-ui/icons/";
 import { setProfilesAC } from "./../../redux/actionCreators";
+import {ageValidate, nameValidate } from "./common/Validators";
+import { badName,badAge, reqField, dupProfile } from "./common/ErrorsText";
+
 
 function validate(values, operation) {
   const errors = {};
   if (!values.name) {
-    errors.name = "Required";
-  } else if (!/^[A-Z0-9._%+-]{2,}$/i.test(values.name)) {
-    errors.name = "Invalid name";
+    errors.name = reqField;
+  } else if (!nameValidate.test(values.name)) {
+    errors.name = badName;
   }
   if (!values.surname) {
-    errors.surname = "Required";
-  } else if (!/^[A-Z0-9._%+-0-9]{2,}$/i.test(values.surname)) {
-    errors.surname = "Invalid surname";
+    errors.surname = reqField;
+  } else if (!nameValidate.test(values.surname)) {
+    errors.surname = badName;
   }
   if (!values.age) {
-    errors.age = "Required";
-  } else if (!/^[0-9]{1,}$/i.test(values.age)) {
-    errors.age = "Invalid age";
+    errors.age = reqField;
+  } else if (!ageValidate.test(values.age)) {
+    errors.age = badAge;
   }
   return errors;
 }
@@ -38,7 +41,7 @@ async function profileProcess(profile, User, setProfilesACprop) {
     "PUT"
   );
   if (addProfileResult === false) {
-    alert("duplicate profile");
+    alert(dupProfile);
   }
   getProfiles(User).then((result) => {
     setProfilesACprop(result);

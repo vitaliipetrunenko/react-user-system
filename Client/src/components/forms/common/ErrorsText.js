@@ -1,0 +1,8 @@
+export const badEmail = "Invalid email address"
+export const badName = "Invalid name"
+export const badPass = "Invalid password"
+export const badAge = "Invalid age"
+export const reqField = "Required"
+export const usedEmail = "Email already registered"
+export const failedLogin = "Login failed"
+export const dupProfile = "duplicate profile"

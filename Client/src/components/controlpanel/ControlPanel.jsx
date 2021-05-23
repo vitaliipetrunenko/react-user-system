@@ -5,6 +5,7 @@ import styl from "./../userboard/userprofiles/UserProfiles.module.css";
 import Dashboard from "../dashboard/Dashboard";
 import { fetchUsers } from "../../apiCalls/apiCalls";
 import { CircularProgress } from "@material-ui/core";
+import { admRole } from "../../redux/roles";
 
 function ControlPanel(props) {
   const [Users, setUsers] = useState([]);
@@ -16,7 +17,7 @@ function ControlPanel(props) {
       setUsersLoading(false);
     });
   }, []);
-  if (props.currUser.role === "ADMIN" && Users) {
+  if (props.currUser.role === admRole && Users) {
     let UserList = [...Users].map((e, i) => (
       <UserBoxHOC key={Users[i]._id} setUsers={setUsers} user={Users[i]} />
     ));

@@ -5,6 +5,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styl from "./Header.module.css";
+import { admRole } from "../../redux/roles";
 
 export default function Header(props) {
   return (
@@ -12,7 +13,7 @@ export default function Header(props) {
       <div className={styl.User}>
         <img
           className={
-            props.currUser.role === "ADMIN" ? styl.adminPhoto : styl.userPhoto
+            props.currUser.role === admRole ? styl.adminPhoto : styl.userPhoto
           }
           alt={""}
           src={"http://mymbs.co.id/public/upload/image/user/user.png"}
@@ -31,7 +32,7 @@ export default function Header(props) {
           </Button>
         </NavLink>
 
-        {props.currUser.role === "ADMIN" ? (
+        {props.currUser.role === admRole ? (
           <NavLink to="/control">
             <Button>
               Users

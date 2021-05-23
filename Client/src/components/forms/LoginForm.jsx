@@ -8,44 +8,52 @@ import FormikMaterialTextField from "./common/FormikMaterialTextField";
 import styl from "./styles/Login.module.css";
 import { Button, Radio } from "@material-ui/core";
 import { OfflinePinSharp } from "@material-ui/icons/";
+import { emailValidate, passwordValidate, nameValidate } from "./common/Validators";
+import { badEmail, reqField,badPass,badName,usedEmail,failedLogin } from "./common/ErrorsText";
+import { usrRole } from "../../redux/roles";
+
+const login = "Login";
+const register = "Register";
+
+
 
 function validate(values, operation) {
   const errors = {};
   if (!values.email) {
-    errors.email = "Required";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-    errors.email = "Invalid email address";
+    errors.email = reqField;
+  } else if (!emailValidate.test(values.email)) {
+    errors.email = badEmail;
   }
   if (!values.password) {
-    errors.password = "Required";
-  } else if (!/^[A-Z0-9._%+-]{2,}$/i.test(values.password)) {
-    errors.password = "Invalid password";
+    errors.password = reqField;
+  } else if (!passwordValidate.test(values.password)) {
+    errors.password = badPass;
   }
-  if (!values.name && operation === "Register") {
-    errors.name = "Required";
+  if (!values.name && operation === register) {
+    errors.name = reqField;
   } else if (
-    !/^[A-Z0-9._%+-]{2,}$/i.test(values.name) &&
-    operation === "Register"
+    !nameValidate.test(values.name) &&
+    operation === register
   ) {
-    errors.name = "Invalid name";
+    errors.name = badName;
   }
   return errors;
 }
 
 async function authProcess(user, props, operation) {
-  if (operation === "Register") {
+  if (operation === register) {
     const regResponse = await regUser(
       {
         username: user.email,
         password: user.password,
-        role: "USER",
+        role: usrRole,
         name: user.name,
       },
       "POST"
     );
 
     if (regResponse === false) {
-      alert("Email already registered");
+      alert(usedEmail);
     }
   }
   const token = await loginUser(
@@ -66,12 +74,12 @@ async function authProcess(user, props, operation) {
       props.setProfilesAC(result);
     });
   } else {
-    alert("Login failed");
+    alert(failedLogin);
   }
 }
 
 const AuthForm = (props) => {
-  const [operation, setOperation] = useState("Login");
+  const [operation, setOperation] = useState(login);
   return (
     <Formik
       className={styl.formikWrap}
@@ -98,8 +106,8 @@ const AuthForm = (props) => {
             <Radio
               type="radio"
               data-testid="opChanger"
-              onChange={(e) => setOperation("Register")}
-              checked={operation === "Register"}
+              onChange={(e) => setOperation(register)}
+              checked={operation === register}
               name="radio"
               value="sign up"
             />
@@ -109,15 +117,15 @@ const AuthForm = (props) => {
           <label>
             <Radio
               type="radio"
-              onChange={(e) => setOperation("Login")}
-              checked={operation === "Login"}
+              onChange={(e) => setOperation(login)}
+              checked={operation === login}
               name="radio"
               value="sign in"
             />
             Sign in
           </label>
         </div>
-        {operation === "Register" ? (
+        {operation === register ? (
           <div>
             Name:
             <br />
