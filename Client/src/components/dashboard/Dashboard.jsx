@@ -2,6 +2,7 @@ import { CircularProgress } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { getStats } from "../../apiCalls/apiCalls";
 import styl from "./Dashboard.module.css";
+import {useToggle} from "./../../hooks/useToggle"
 
 export default function Dashboard() {
   const [stats, setStats] = useState({
@@ -9,12 +10,12 @@ export default function Dashboard() {
     profiles: 0,
     matureProfiles: 0,
   });
-  const [areStatsLoading, setStatsLoading] = useState(false); //
+  const [areStatsLoading, setStatsLoading] = useToggle();; 
   useEffect(() => {
-    setStatsLoading(true);
+    setStatsLoading();
     getStats().then((res) => {
       setStats({ users: res[0], profiles: res[1], matureProfiles: res[2] });
-      setStatsLoading(false); //
+      setStatsLoading(); 
     });
   }, []);
   return (
