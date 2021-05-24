@@ -1,5 +1,7 @@
 # react-user-system
 
+Fixes after review here https://docs.google.com/document/d/1-f1n75mqFC4_dS-RjQTOM4ManZlkFCNc3cN8w9pJJ5E/edit?usp=sharing
+
 Docs
 
 Project is split into 2 directories:
